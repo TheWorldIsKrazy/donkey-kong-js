@@ -7,7 +7,7 @@
 * @canvas
 * @context
 * @visible boolean
-* @animations {'name': {min: frame, max:frame}}
+* @animations {'name': {min: frame, max:frame, frameRate: X(fps)}}
 * @currentAnimation 
 * @position {x:XX, y:XX}
 * @bounceMin function(sprite)
@@ -24,7 +24,15 @@ var Sprite = function(params) {
 	this.nbrOfImages = params.nbrOfImages || null;
 	this.visible = params.visible || true;
 	
-	this.animations = params.animations || {'main':{min:0, max:this.nbrOfImages}};
+	this.animations = params.animations || {'main':{} };
+
+	for (var anim in this.animations) {
+		anim.min = anim.min || 0;
+		anim.max = anim.min || this.nbrOfImages;
+		anim.frameRate = anim.frameRate || 5;
+		anim.lastUpdate = new Date();
+	};
+
 	this.currentAnimation = params.currentAnimation || 'main';
 
 	if (this.ctx === null && this.canvas !== null) {
@@ -59,6 +67,7 @@ var Sprite = function(params) {
 	this.reverse = false;
 	this.index = 0;
 	this.lastRenderFrame = null;
+	this.lastRenderTime = new Date();
 
 	// Set canvas size
 	this.canvas.height = this.size.height;
@@ -101,7 +110,9 @@ Sprite.prototype.nextImage = function() {
 
 Sprite.prototype.update = function() {
 	if (this.state == 'play') {
-		this.nextImage();
+		if ( (new Date() - this.lastRenderTime) > (1000/this.getAnim().frameRate) ) {
+			this.nextImage();		
+		}
 	}
 	if (this.visible) {
 		this.display();
