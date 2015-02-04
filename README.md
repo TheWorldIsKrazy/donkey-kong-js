@@ -2,6 +2,3 @@
 
 DUT MMI.
 Université de Limoges.
-
-plop
-
