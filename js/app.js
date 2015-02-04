@@ -39,7 +39,9 @@ var monster = new Sprite({
 
 var render = function() {
 	monster.update();
-	window.setTimeout(render, 100);
-}
+};
 
-render();
+(function animloop(){
+	requestAnimationFrame(animloop);
+	render();
+})();
