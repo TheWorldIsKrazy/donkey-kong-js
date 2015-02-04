@@ -56,7 +56,7 @@ var Sprite = function(params) {
 		sprite.play();
 	};
 
-	this.image =  new Image();
+	this.image = new Image();
 	that = this;
 	this.image.addEventListener("load", function() {
 		that.loaded = true;
