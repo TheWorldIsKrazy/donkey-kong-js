@@ -22,6 +22,7 @@ var monster = new Sprite({
 		'jump': {
 			min: 0,
 			max:5,
+			frameRate:2,
 			bounceMin: function(sprite) {
 				sprite.setAnimation('hide');
 				sprite.reverse = false;
@@ -31,8 +32,8 @@ var monster = new Sprite({
 				}, delay);
 			}
 		},
-		'hide': {min: 0, max:0},
-		'boom': {min: 6, max:6}
+		'hide': {min: 0, max:0, frameRate:2},
+		'boom': {min: 6, max:6, frameRate:0}
 	},
 	currentAnimation: 'jump',
 });

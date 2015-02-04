@@ -26,12 +26,14 @@ var Sprite = function(params) {
 	
 	this.animations = params.animations || {'main':{} };
 
-	for (var anim in this.animations) {
-		anim.min = anim.min || 0;
-		anim.max = anim.min || this.nbrOfImages;
-		anim.frameRate = anim.frameRate || 5;
+	for (index in this.animations) {
+		anim = this.animations[index];
+		if (anim.min == undefined) {anim.min = 0}
+		if (anim.max == undefined) {anim.max = this.nbrOfImages}
+		if (anim.frameRate == undefined) {anim.frameRate = 2}
 		anim.lastUpdate = new Date();
 	};
+	console.log(this.animations);
 
 	this.currentAnimation = params.currentAnimation || 'main';
 
@@ -110,8 +112,10 @@ Sprite.prototype.nextImage = function() {
 
 Sprite.prototype.update = function() {
 	if (this.state == 'play') {
-		if ( (new Date() - this.lastRenderTime) > (1000/this.getAnim().frameRate) ) {
-			this.nextImage();		
+		if (this.getAnim().frameRate > 0) {
+			if ( (new Date() - this.lastRenderTime) > (1000/this.getAnim().frameRate) ) {
+				this.nextImage();		
+			}
 		}
 	}
 	if (this.visible) {
