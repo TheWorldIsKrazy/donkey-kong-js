@@ -31,7 +31,7 @@ var Sprite = function(params) {
 		if (anim.min == undefined) {anim.min = 0}
 		if (anim.max == undefined) {anim.max = this.nbrOfImages}
 		if (anim.frameRate == undefined) {anim.frameRate = 2}
-		anim.lastUpdate = new Date();
+		anim.lastUpdate = Date.now();
 	};
 	console.log(this.animations);
 
@@ -69,7 +69,7 @@ var Sprite = function(params) {
 	this.reverse = false;
 	this.index = 0;
 	this.lastRenderFrame = null;
-	this.lastRenderTime = new Date();
+	this.lastRenderTime = Date.now();
 
 	// Set canvas size
 	this.canvas.height = this.size.height;
@@ -113,7 +113,8 @@ Sprite.prototype.nextImage = function() {
 Sprite.prototype.update = function() {
 	if (this.state == 'play') {
 		if (this.getAnim().frameRate > 0) {
-			if ( (new Date() - this.lastRenderTime) > (1000/this.getAnim().frameRate) ) {
+			if ( (Date.now() - this.lastRenderTime) > (1000/this.getAnim().frameRate) ) {
+				this.lastRenderTime = Date.now();
 				this.nextImage();		
 			}
 		}
