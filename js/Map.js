@@ -17,7 +17,7 @@ var Map = function(params) {
 		echelle: echelleimg,
 	}
 	blockimg.scr = 'images/block.png';
-	echelleimg.scr = 'images/block.png';
+	echelleimg.scr = 'images/echelle.png';
 
 	this.data = Array();
 	this.init();
