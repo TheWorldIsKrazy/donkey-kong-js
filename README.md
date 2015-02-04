@@ -1,1 +1,5 @@
-# donkey-kong-js
+# Donkey Kong JS
+
+DUT MMI.
+Université de Limoges.
+
