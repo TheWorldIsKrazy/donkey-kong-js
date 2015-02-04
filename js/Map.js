@@ -33,7 +33,11 @@ Map.prototype.display = function() {
 
 Map.prototype.imgLoaded = function() {
 	this.imgsOK++;
-	if (this.images.length == this.imgsOK) {
+	var nbrOfImages = 0;
+	for (var elem in this.images) {
+		nbrOfImages++;
+	};
+	if (nbrOfImages == this.imgsOK) {
 		console.log("loaded !");
 	}
 };
