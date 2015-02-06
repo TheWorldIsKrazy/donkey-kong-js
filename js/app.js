@@ -2,7 +2,7 @@ var canvas = document.getElementById('monster');
 var ctx = canvas.getContext('2d');
 
 map = new Map({
-
+	levels: levels,
 });
 
 var render = function() {

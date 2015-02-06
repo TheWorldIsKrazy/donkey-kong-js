@@ -1,25 +1,24 @@
 var Map = function(params) {
-	this.model = params.levels;
+	this.data = params.levels;
 	
 	// Images
 	that = this;
 	this.imgsOK = 0;
-	blockimg = new Image();
-	blockimg.addEventListener("load", function() {
-		that.imgLoaded();
-	}, false);
-	echelleimg = new Image();
-	echelleimg.addEventListener("load", function() {
-		that.imgLoaded();
-	}, false);
 	this.images = {
-		block: blockimg,
-		echelle: echelleimg,
-	}
-	blockimg.scr = 'images/block.png';
-	echelleimg.scr = 'images/echelle.png';
+		block: new Image(),
+		echelle: new Image(),
+	};
+	this.images.block.addEventListener("load", function() {
+		console.log("img1");
+		that.imgLoaded();
+	}, false);
+	this.images.echelle.addEventListener("load", function() {
+		console.log("img2");
+		that.imgLoaded();
+	}, false);
+	this.images.block.scr = 'images/block.png';
+	this.images.echelle.scr = 'images/echelle.png';
 
-	this.data = Array();
 	this.init();
 };
 
