@@ -47,7 +47,24 @@ Map.prototype.init = function() {
 };
 
 Map.prototype.display = function() {
+
+	// Black background
+	this.ctx.rect(0,0,this.grid.width*this.size.width, this.grid.height*this.size.height);
+	this.ctx.fillStyle = "black";
+	this.ctx.fill();
+
 	lvl = this.getCurrentLevel();
+	for (var j = 0; j < lvl["echelles"].length; j++) {
+		for (var k = 0; k < lvl["echelles"][j].length; k++) {
+			//lvl["blocks"][j][k];
+			if (lvl["echelles"][j][k] == 1) {
+				this.ctx.drawImage(this.images.echelle,
+					this.grid.width*k, this.grid.height*j,
+					this.grid.width, this.grid.height
+				);
+			}
+		}
+	}
 	for (var j = 0; j < lvl["blocks"].length; j++) {
 		for (var k = 0; k < lvl["blocks"][j].length; k++) {
 			//lvl["blocks"][j][k];
