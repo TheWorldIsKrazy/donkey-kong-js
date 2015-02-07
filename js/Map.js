@@ -48,17 +48,14 @@ Map.prototype.init = function() {
 
 Map.prototype.display = function() {
 	lvl = this.getCurrentLevel();
-	for (var i = 0; i < this.data.length; i++) {
-		lvl = this.data[i];
-		for (var j = 0; j < lvl["blocks"].length; j++) {
-			for (var k = 0; k < lvl["blocks"][j].length; k++) {
-				//lvl["blocks"][j][k];
-				if (lvl["blocks"][j][k] != 9) {
-					this.ctx.drawImage(this.images.block,
-						this.grid.width*k, this.grid.height*j + lvl["blocks"][j][k],
-						this.grid.width, this.grid.height
-					);
-				}
+	for (var j = 0; j < lvl["blocks"].length; j++) {
+		for (var k = 0; k < lvl["blocks"][j].length; k++) {
+			//lvl["blocks"][j][k];
+			if (lvl["blocks"][j][k] != 9) {
+				this.ctx.drawImage(this.images.block,
+					this.grid.width*k, this.grid.height*j + lvl["blocks"][j][k],
+					this.grid.width, this.grid.height
+				);
 			}
 		}
 	}
