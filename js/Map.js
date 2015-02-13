@@ -45,17 +45,17 @@ var Map = function(params) {
 
 	// data validation
 	for (var i = 0; i < this.data.length; i++) {
-		lvl = this.data[i];
-		for (var grid in lvl) {
-			if (lvl[grid].length != this.size.height) {
-				console.log("La hauteur de " + grid + " du niveau " + i + " ne correspond pas !");
+		layers = this.data[i].maps;
+		for (var j = 0; j < layers.length; j++) {
+			if (layers[j].length != this.size.height) {
+				console.log("La hauteur du calque n°" + j + " du niveau " + i + " ne correspond pas !");
 			}
-			for (var j = 0; j < lvl[grid].length; j++) {
-				if (lvl[grid][j].length != this.size.width) {
-					console.log("La largeur de " + grid + " du niveau " + i + " ne correspond pas !");
+			for (var k = 0; k < layers[j].length; k++) {
+				if (layers[j][k].length != this.size.width) {
+					console.log("La largeur de la ligne n°" + k + " du calque n°" + j + " du niveau " + i + " ne correspond pas !");
 				}
 			};
-		}
+		};
 	}
 };
 
