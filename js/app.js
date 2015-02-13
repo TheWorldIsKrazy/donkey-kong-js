@@ -8,7 +8,7 @@ map = new Map({
 	ctx: ctx,
 });
 
-map.loadLevel(0, function() {
+map.loadLevel(1, function() {
 	map.display();
 });
 

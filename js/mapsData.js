@@ -23,17 +23,50 @@ function decalage(content, map, x, y){
 }
 
 levels[0].elements = {
-	' ' : function() {},
-	'0' : 'block',
-	'1' : decalage,
-	'2' : decalage,
-	'3' : decalage,
-	'4' : decalage,
-	'5' : decalage,
-	'6' : decalage,
-	'7' : decalage,
-	'8' : decalage,
-	'H' : 'echelle',
+	' ' : new Block(
+		skin : function() {},
+	),
+
+	'0' : new Block(
+		skin : 'block',
+	),
+
+	'1' : new Block(
+		skin : decalage,
+	),
+
+	'2' : new Block(
+		skin : decalage,
+	),
+
+	'3' : new Block(
+		skin : decalage,
+	),
+
+	'4' : new Block(
+		skin : decalage,
+	),
+
+	'5' : new Block(
+		skin : decalage,
+	),
+
+	'6' : new Block(
+		skin : decalage,
+	),
+
+	'7' : new Block(
+		skin : decalage,
+	),
+
+	'8' : new Block(
+		skin : decalage,
+	),
+
+	'H' : new Block(
+		skin : 'echelle',
+	),
+
 };
 
 
@@ -117,7 +150,7 @@ levels[1].elements = {
 	'=' : 'carre',
 	'H' : 'echelle',
 	'X' : 'croix',
-}
+};
 
 levels[1].maps = Array();
 
@@ -126,10 +159,10 @@ levels[1].maps[0] = [
 	"        H H                 ",
 	"        H H                 ",
 	"        H H                 ",
-	"        H H                 ",
 	"        H H     H           ",
 	"        H H     H           ",
-	"                H           ",
+	"        H H     H           ",
+	"                            ",
 	"                            ",
 	"                            ",
 	"  H                      H  ",

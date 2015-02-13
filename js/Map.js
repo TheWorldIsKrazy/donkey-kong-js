@@ -11,7 +11,7 @@ var Map = function(params) {
 
 	// data validation
 	for (var i = 0; i < this.data.length; i++) {
-		layers = this.data[i].maps;
+		var layers = this.data[i].maps;
 		for (var j = 0; j < layers.length; j++) {
 			if (layers[j].length != this.size.height) {
 				console.log("La hauteur du calque n°" + j + " du niveau " + i + " ne correspond pas !");
@@ -44,7 +44,7 @@ Map.prototype.loadLevel = function(level, onload) {
 	this.ctx.fillStyle = "black";
 	this.ctx.fill();
 
-	lvl = this.getCurrentLevel();
+	var lvl = this.getCurrentLevel();
 
 	// Load level's images
 	this.images = {};
@@ -64,9 +64,7 @@ Map.prototype.loadLevel = function(level, onload) {
 
 Map.prototype.display = function() {
 	
-	lvl = this.getCurrentLevel();
-
-	console.log(lvl);
+	var lvl = this.getCurrentLevel();
 
 	// Foreach map
 	for (var i = 0; i < lvl.maps.length; i++) {
@@ -75,16 +73,20 @@ Map.prototype.display = function() {
 			// Foreach case
 			for (var k = 0; k < lvl.maps[i][j].length; k++) {
 				// Foreach block
-				content = lvl.maps[i][j][k];
+				var content = lvl.maps[i][j][k];
                 var el =  lvl.elements[content];
-				if(typeof(el)  == "function" ){
-					el(content, this, k, j);
-				} else {
-					this.displayElem(el,
-						k*this.grid.width, j*this.grid.width,
-						map.grid.width, map.grid.height
-					);
-				}
+                if (el !== undefined) {
+					if(typeof(el)  == "function" ){
+						el(content, this, k, j);
+					} else {
+						this.displayElem(el,
+							k*this.grid.width, j*this.grid.width,
+							map.grid.width, map.grid.height
+						);
+					}
+                } else {
+                	console.log("Le charactere " + content + " ne correspond à aucun block");
+                }
 			}
 		}
 	}
