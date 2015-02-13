@@ -8,6 +8,8 @@ map = new Map({
 	ctx: ctx,
 });
 
+map.loadLevel();
+
 var render = function() {
 	
 };

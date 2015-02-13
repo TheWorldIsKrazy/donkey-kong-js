@@ -63,7 +63,15 @@ Map.prototype.init = function() {
 	
 };
 
-Map.prototype.display = function() {
+Map.prototype.levelLoaded = function() {
+	
+};
+
+Map.prototype.loadLevel = function(level) {
+
+	if (level !== undefined) {
+		this.level = level;
+	}
 
 	// Black background
 	this.ctx.rect(0,0,this.grid.width*this.size.width, this.grid.height*this.size.height);
@@ -75,16 +83,16 @@ Map.prototype.display = function() {
 	// Load level's images
 	this.images = {};
 	this.imgsOK = 0;
+	that = this;
 
 	for (var name in lvl.images) {
-		console.log(lvl.images[i]);
-		this.images[ lvl.images[i] ] = new Image();
-		this.images[ lvl.images[i] ].addEventListener("load", function() {
+		this.images[name] = new Image();
+		this.images[name].addEventListener("load", function() {
 			(function(myMap) {
 				myMap.imgLoaded();
-			})(this)
+			})(that);
 		}, false);
-		this.images[ lvl.images[i] ].src = lvl.images[ lvl.images[i] ];
+		this.images[name].src = lvl.images[name];
 	};
 
 	// if (this.level == 0) {
@@ -161,5 +169,6 @@ Map.prototype.imgLoaded = function() {
 	};
 	if (nbrOfImages == this.imgsOK) {
 		console.log("All resources are loaded !");
+		this.levelLoaded();
 	}
 };
