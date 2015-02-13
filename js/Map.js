@@ -77,7 +77,14 @@ Map.prototype.display = function() {
 	this.imgsOK = 0;
 
 	for (var name in lvl.images) {
-		this.images[lvl.images[i]]
+		console.log(lvl.images[i]);
+		this.images[ lvl.images[i] ] = new Image();
+		this.images[ lvl.images[i] ].addEventListener("load", function() {
+			(function(myMap) {
+				myMap.imgLoaded();
+			})(this)
+		}, false);
+		this.images[ lvl.images[i] ].src = lvl.images[ lvl.images[i] ];
 	};
 
 	// if (this.level == 0) {
