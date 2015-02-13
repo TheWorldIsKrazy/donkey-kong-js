@@ -14,8 +14,12 @@ levels[0].elements = {
 	'H' : 'echelle',
 };
 
-function decalage(data){
-	console.warn(data);
+function decalage(content, map, x, y){
+	content = parseInt(content, 10);
+	map.displayElem('block',
+		x*map.grid.width, y*map.grid.width + content,
+		map.grid.width, map.grid.height
+	);
 }
 
 levels[0].elements = {
@@ -27,7 +31,8 @@ levels[0].elements = {
 	'4' : decalage,
 	'5' : decalage,
 	'6' : decalage,
-
+	'7' : decalage,
+	'8' : decalage,
 	'H' : 'echelle',
 };
 
