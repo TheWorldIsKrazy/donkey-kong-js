@@ -3,15 +3,15 @@ var levels = Array();
 levels[0] = {};
 
 levels[0].images = {
-	block : 'images/blockRouge.png'
-	echelle : 'images/echelleBleu.png'
+	block : 'images/blockRouge.png',
+	echelle : 'images/echelleBleu.png',
 };
 
 levels[0].elements = {
-	' ' : function() {}
-	'0' : 'block'
-	'1234567' : function() {}
-	'H' : 'echelle'
+	' ' : function() {},
+	'0' : 'block',
+	'1234567' : function() {},
+	'H' : 'echelle',
 };
 
 levels[0].maps = Array();
