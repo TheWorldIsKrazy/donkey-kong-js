@@ -75,6 +75,7 @@ Map.prototype.display = function() {
 	this.ctx.fill();
 
 	lvl = this.getCurrentLevel();
+
 	if (this.level == 0) {
 		for (var j = 0; j < lvl["echelles"].length; j++) {
 			for (var k = 0; k < lvl["echelles"][j].length; k++) {
