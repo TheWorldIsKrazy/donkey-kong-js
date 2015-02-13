@@ -14,6 +14,24 @@ levels[0].elements = {
 	'H' : 'echelle',
 };
 
+function decalage(data){
+	console.warn(data);
+}
+
+levels[0].elements = {
+	' ' : function() {},
+	'0' : 'block',
+	'1' : decalage,
+	'2' : decalage,
+	'3' : decalage,
+	'4' : decalage,
+	'5' : decalage,
+	'6' : decalage,
+
+	'H' : 'echelle',
+};
+
+
 levels[0].maps = Array();
 
 levels[0].maps[0] = [

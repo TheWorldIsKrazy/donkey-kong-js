@@ -102,8 +102,26 @@ Map.prototype.loadLevel = function(level, onload) {
 
 Map.prototype.display = function() {
 	
+	lvl = this.getCurrentLevel();
 
-	
+	console.log(lvl);
+
+	// Foreach map
+	for (var i = 0; i < lvl.maps.length; i++) {
+		// Foreach line
+		for (var j = 0; j < lvl.maps[i].length; j++) {
+			// Foreach case
+			for (var k = 0; k < lvl.maps[i][j].length; k++) {
+				// Foreach block
+				content = lvl.maps[i][j][k];
+                var el =  lvl.elements[content];
+				if(typeof(el)  == "function" ){
+					console.log(content)
+					el(content);
+				}
+			}
+		}
+	}
 
 	// if (this.level == 0) {
 	// 	for (var j = 0; j < lvl["echelles"].length; j++) {
