@@ -8,7 +8,9 @@ map = new Map({
 	ctx: ctx,
 });
 
-map.loadLevel();
+map.loadLevel(0, function() {
+	map.display();
+});
 
 var render = function() {
 	

@@ -67,11 +67,15 @@ Map.prototype.levelLoaded = function() {
 	
 };
 
-Map.prototype.loadLevel = function(level) {
+Map.prototype.loadLevel = function(level, onload) {
 
 	if (level !== undefined) {
 		this.level = level;
-	}
+	};
+
+	if (onload !== undefined) {
+		this.levelLoaded = onload;
+	};
 
 	// Black background
 	this.ctx.rect(0,0,this.grid.width*this.size.width, this.grid.height*this.size.height);
@@ -94,6 +98,12 @@ Map.prototype.loadLevel = function(level) {
 		}, false);
 		this.images[name].src = lvl.images[name];
 	};
+};
+
+Map.prototype.display = function() {
+	
+
+	
 
 	// if (this.level == 0) {
 	// 	for (var j = 0; j < lvl["echelles"].length; j++) {
