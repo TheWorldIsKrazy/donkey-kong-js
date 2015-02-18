@@ -29,6 +29,13 @@ Map.prototype.levelLoaded = function() {
 	
 };
 
+Map.prototype.clear = function() {
+	// Black background
+	this.ctx.rect(0,0,this.grid.width*this.size.width, this.grid.height*this.size.height);
+	this.ctx.fillStyle = "black";
+	this.ctx.fill();
+};
+
 Map.prototype.loadLevel = function(level, onload) {
 
 	if (level !== undefined) {
@@ -39,10 +46,7 @@ Map.prototype.loadLevel = function(level, onload) {
 		this.levelLoaded = onload;
 	};
 
-	// Black background
-	this.ctx.rect(0,0,this.grid.width*this.size.width, this.grid.height*this.size.height);
-	this.ctx.fillStyle = "black";
-	this.ctx.fill();
+	this.clear();
 
 	var lvl = this.getCurrentLevel();
 
@@ -63,6 +67,8 @@ Map.prototype.loadLevel = function(level, onload) {
 };
 
 Map.prototype.display = function() {
+
+	this.clear();
 	
 	var lvl = this.getCurrentLevel();
 
