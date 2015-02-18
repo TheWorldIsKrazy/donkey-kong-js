@@ -1,6 +1,6 @@
 var Block = function(params) {
 	this.skin = params.skin;
-}
+};
 
 Block.prototype.enter = {};
 

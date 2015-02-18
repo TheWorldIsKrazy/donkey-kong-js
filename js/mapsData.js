@@ -23,49 +23,49 @@ function decalage(content, map, x, y){
 }
 
 levels[0].elements = {
-	' ' : new Block(
+	' ' : new Block({
 		skin : function() {},
-	),
+	}),
 
-	'0' : new Block(
+	'0' : new Block({
 		skin : 'block',
-	),
+	}),
 
-	'1' : new Block(
+	'1' : new Block({
 		skin : decalage,
-	),
+	}),
 
-	'2' : new Block(
+	'2' : new Block({
 		skin : decalage,
-	),
+	}),
 
-	'3' : new Block(
+	'3' : new Block({
 		skin : decalage,
-	),
+	}),
 
-	'4' : new Block(
+	'4' : new Block({
 		skin : decalage,
-	),
+	}),
 
-	'5' : new Block(
+	'5' : new Block({
 		skin : decalage,
-	),
+	}),
 
-	'6' : new Block(
+	'6' : new Block({
 		skin : decalage,
-	),
+	}),
 
-	'7' : new Block(
+	'7' : new Block({
 		skin : decalage,
-	),
+	}),
 
-	'8' : new Block(
+	'8' : new Block({
 		skin : decalage,
-	),
+	}),
 
-	'H' : new Block(
+	'H' : new Block({
 		skin : 'echelle',
-	),
+	}),
 
 };
 
