@@ -74,7 +74,7 @@ Map.prototype.display = function() {
 			for (var k = 0; k < lvl.maps[i][j].length; k++) {
 				// Foreach block
 				var content = lvl.maps[i][j][k];
-                var skin =  lvl.elements[content];
+                var skin =  lvl.elements[content].skin;
                 if (skin !== undefined) {
 					if(typeof(skin)  == "function" ){
 						skin(content, this, k, j);
