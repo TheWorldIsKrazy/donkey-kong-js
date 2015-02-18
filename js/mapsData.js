@@ -2,22 +2,15 @@ var levels = Array();
 
 levels[0] = {};
 
-levels[0].images = {
+levels[0].skins = {
 	block : 'images/blockRouge.png',
 	echelle : 'images/echelleBleu.png',
-};
-
-levels[0].elements = {
-	' ' : function() {},
-	'0' : 'block',
-	'1234567' : function() {},
-	'H' : 'echelle',
 };
 
 function decalage(content, map, x, y){
 	content = parseInt(content, 10);
 	map.displayElem('block',
-		x*map.grid.width, y*map.grid.width + content,
+		x*map.grid.width, y*map.grid.width + content*(map.grid.height*0.125),
 		map.grid.width, map.grid.height
 	);
 }
@@ -137,7 +130,7 @@ levels[0].maps[1] = [
 
 levels[1] = {};
 
-levels[1].images = {
+levels[1].skins = {
 	block : 'images/blockJaune.png',
 	carre : 'images/blockCarreJaune.png',
 	croix : 'images/croix.png',
@@ -145,7 +138,9 @@ levels[1].images = {
 };
 
 levels[1].elements = {
-	' ' : function() {},
+	' ' : new Block({
+		skin : function() {},
+	}),
 	'N' : new Block({
 		skin : 'block',
 	}),

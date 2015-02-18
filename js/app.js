@@ -4,11 +4,17 @@ var ctx = canvas.getContext('2d');
 map = new Map({
 	levels: levels,
 	size: {width: 28, height:28},
-	grid: {width: 16, height: 16},
+	grid: {width: 24, height: 24},
 	ctx: ctx,
 });
 
-map.loadLevel(1, function() {
+objects = {};
+
+objects.mario = new Character({
+
+});
+
+map.loadLevel(0, function() {
 	map.display();
 });
 

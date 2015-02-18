@@ -76,4 +76,9 @@ Block.prototype.leave.left = function(map, x, y, elem) {
 		return true;
 };
 
-
+/*
+* Return false, true or a number
+*/
+Block.prototype.fall = function (map, x, y, elem) {
+	return true;
+}

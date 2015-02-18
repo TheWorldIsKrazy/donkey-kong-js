@@ -51,14 +51,14 @@ Map.prototype.loadLevel = function(level, onload) {
 	this.imgsOK = 0;
 	that = this;
 
-	for (var name in lvl.images) {
+	for (var name in lvl.skins) {
 		this.images[name] = new Image();
 		this.images[name].addEventListener("load", function() {
 			(function(myMap) {
 				myMap.imgLoaded();
 			})(that);
 		}, false);
-		this.images[name].src = lvl.images[name];
+		this.images[name].src = lvl.skins[name];
 	};
 };
 
@@ -80,7 +80,7 @@ Map.prototype.display = function() {
 						skin(content, this, k, j);
 					} else {
 						this.displayElem(skin,
-							k*this.grid.width, j*this.grid.width,
+							k*this.grid.width, j*this.grid.height,
 							map.grid.width, map.grid.height
 						);
 					}
