@@ -74,12 +74,12 @@ Map.prototype.display = function() {
 			for (var k = 0; k < lvl.maps[i][j].length; k++) {
 				// Foreach block
 				var content = lvl.maps[i][j][k];
-                var el =  lvl.elements[content];
-                if (el !== undefined) {
-					if(typeof(el)  == "function" ){
-						el(content, this, k, j);
+                var skin =  lvl.elements[content];
+                if (skin !== undefined) {
+					if(typeof(skin)  == "function" ){
+						skin(content, this, k, j);
 					} else {
-						this.displayElem(el,
+						this.displayElem(skin,
 							k*this.grid.width, j*this.grid.width,
 							map.grid.width, map.grid.height
 						);
