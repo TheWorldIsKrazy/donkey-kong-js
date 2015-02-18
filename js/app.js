@@ -11,12 +11,15 @@ map = new Map({
 objects = {};
 
 objects.mario = new Character({
-
+	position : {x : 50, y: 50},
+	ctx: ctx,
 });
 
 map.loadLevel(0, function() {
 	map.display();
 });
+
+objects.mario.display();
 
 var render = function() {
 	
