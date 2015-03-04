@@ -1,10 +1,11 @@
 var WorldObject = function (params) {
 	if (params) {
 		this.position = params.position;
+		this.size = params.size || {width: 50, height:50},
 		this.velocity = params.velocity || {x:0, y:0},
 		this.acceleration = params.acceleration || {x:0, y:0},
-		this.size = params.size || {width: 50, height:50},
 		this.ctx = params.ctx;
+		this.skin = params.skin;
 	}
 };
 

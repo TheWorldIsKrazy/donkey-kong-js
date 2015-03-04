@@ -1,14 +1,14 @@
 var canvas = document.getElementById('monster');
 var ctx = canvas.getContext('2d');
 
-map = new Map({
+var map = new Map({
 	levels: levels,
 	size: {width: 28, height:28},
 	grid: {width: 24, height: 24},
 	ctx: ctx,
 });
 
-objects = {};
+var objects = {};
 
 map.loadLevel(0, function() {
 	map.display();
