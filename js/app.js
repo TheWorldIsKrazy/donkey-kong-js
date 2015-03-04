@@ -1,6 +1,11 @@
 var canvas = document.getElementById('monster');
 var ctx = canvas.getContext('2d');
 
+var allSkins = new SpriteList({
+	source : 'images/Arcade - Donkey Kong - Donkey Kong.png',
+	animations : sprites,
+});
+
 var map = new Map({
 	levels: levels,
 	size: {width: 28, height:28},

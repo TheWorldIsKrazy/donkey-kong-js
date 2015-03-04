@@ -4,7 +4,6 @@ var WorldObject = function (params) {
 		this.size = params.size || {width: 50, height:50},
 		this.velocity = params.velocity || {x:0, y:0},
 		this.acceleration = params.acceleration || {x:0, y:0},
-		this.ctx = params.ctx;
 		this.skin = params.skin;
 	}
 };
@@ -22,6 +21,10 @@ WorldObject.prototype.applyVelocity = function() {
 
 WorldObject.prototype.applyMap = function(map) {
 	
+};
+
+WorldObject.prototype.display = function() {
+	this.sprite.display(this.skin);
 };
 
 
