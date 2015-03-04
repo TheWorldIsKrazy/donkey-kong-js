@@ -10,7 +10,7 @@ var sprites = {
 		},
 
 		standRight : {
-			position : {x: 0, y:25},
+			position : {x: 0, y:24},
 			size : {width: 12, height: 16},
 			nbrOfImages : 1,
 		},
@@ -22,7 +22,7 @@ var sprites = {
 		},
 
 		runRight : {
-			position : {x: 16, y:25},
+			position : {x: 16, y:24},
 			size : {width: 15, height: 16},
 			nbrOfImages : 2,
 		},
@@ -40,7 +40,7 @@ var sprites = {
 		},
 
 		deathRight : {
-			position : {x: 120, y:25},
+			position : {x: 120, y:24},
 			size : {width: 16, height: 16},
 			nbrOfImages : 3,
 		},
@@ -48,37 +48,37 @@ var sprites = {
 
 	kong : {
 		stand : {
-			position : {x: 0, y:49 },
+			position : {x: 0, y:48 },
 			size : {width: 40, height: 32},
 			nbrOfImages : 1,
 		},
 
 		caisseMarron : {
-			position : {x: 48, y:49 },
+			position : {x: 48, y:48 },
 			size : {width: 43, height: 32},
 			nbrOfImages : 3,
 		},
 
 		caisseBleue : {
-			position : {x: 184, y:49 },
+			position : {x: 184, y:48 },
 			size : {width: 43, height: 32},
 			nbrOfImages : 3,
 		},
 
 		climb : {
-			position : {x: 320, y:49 },
+			position : {x: 320, y:48 },
 			size : {width: 32, height: 36},
 			nbrOfImages : 2,
 		},
 
 		content : {
-			position : {x: 392, y:49 },
+			position : {x: 392, y:48 },
 			size : {width: 46, height: 32},
 			nbrOfImages : 2,
 		},
 
 		climbMeuf : {
-			position : {x: 488, y:49 },
+			position : {x: 488, y:48 },
 			size : {width: 43, height: 36},
 			nbrOfImages : 2,
 		},
@@ -87,19 +87,19 @@ var sprites = {
 
 	poline : {
 		stand : {
-			position : {x: 0, y:89 },
+			position : {x: 0, y:88 },
 			size : {width: 16, height: 22},
 			nbrOfImages : 1,
 		},
 
 		dance : {
-			position : {x: 16, y:89 },
+			position : {x: 16, y:88 },
 			size : {width: 40, height: 32},
 			nbrOfImages : 2,
 		},
 		
 		climb : {
-			position : {x: 32, y:89 },
+			position : {x: 32, y:88 },
 			size : {width: 40, height: 32},
 			nbrOfImages : 2,
 		},
@@ -108,13 +108,13 @@ var sprites = {
 
 	fireBall : {
 		left : {
-			position : {x: 0, y:113 },
+			position : {x: 0, y:112 },
 			size : {width: 14, height: 22},
 			nbrOfImages : 2,
 		},
 
 		right : {
-			position : {x: 33, y:113 },
+			position : {x: 32, y:112 },
 			size : {width: 14, height: 22},
 			nbrOfImages : 2,
 		},
@@ -122,13 +122,13 @@ var sprites = {
 
 	fireBallBlue : {
 		left : {
-			position : {x: 0, y:129 },
+			position : {x: 0, y:128 },
 			size : {width: 16, height: 22},
 			nbrOfImages : 2,
 		},
 
 		right : {
-			position : {x: 33, y:129 },
+			position : {x: 32, y:128 },
 			size : {width: 14, height: 16},
 			nbrOfImages : 2,
 		},
@@ -136,24 +136,24 @@ var sprites = {
 
 	barrelWood : {
 		stand : {
-			position : {x: 0, y:145 },
+			position : {x: 0, y:144 },
 			size : {width: 10, height: 16},
 			nbrOfImages : 1,
 		},
 
 		rollSide : {
-			position : {x: 17, y:145 },
+			position : {x: 16, y:144 },
 			size : {width: 12, height: 10},
 			nbrOfImages : 4,
 		},
 
 		rollFront : {
-			position : {x: 65, y:145 },
+			position : {x: 64, y:144 },
 			size : {width: 16, height: 10},
 			nbrOfImages : 2,
 		},
 		fourBarrel : {
-			position : {x: 81, y:145},
+			position : {x: 80, y:144},
 			size : {width: 20, height: 32},
 			nbrOfImages : 1,
 		}
@@ -162,13 +162,13 @@ var sprites = {
 
 	barrelWoodBlue : {
 		rollSide : {
-			position : {x: 17, y:161 },
+			position : {x: 16, y:160 },
 			size : {width: 12, height: 10},
 			nbrOfImages : 4,
 		},
 
 		rollFront : {
-			position : {x: 65, y:161 },
+			position : {x: 64, y:160 },
 			size : {width: 16, height: 10},
 			nbrOfImages : 2,
 		},
@@ -177,19 +177,19 @@ var sprites = {
 
 	oil : {
 		burnNot : {
-			position : {x: 0, y:177 },
+			position : {x: 0, y:176 },
 			size : {width: 16, height: 32},
 			nbrOfImages : 1,
 		},
 
 		burnBegin : {
-			position : {x: 17, y:177 },
+			position : {x: 16, y:176 },
 			size : {width: 16, height: 32},
 			nbrOfImages : 2,
 		},
 
 		burn : {
-			position : {x: 49, y:177 },
+			position : {x: 48, y:176 },
 			size : {width: 16, height: 32},
 			nbrOfImages : 2,
 		},
