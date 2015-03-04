@@ -2,7 +2,7 @@ var multiply = 3;
 
 var sprites = {
 
-	mario : {
+	jumpMan : {
 		standLeft : {
 			position : {x: 0, y:0},
 			size : {width: 12, height: 16},
@@ -152,6 +152,11 @@ var sprites = {
 			size : {width: 16, height: 10},
 			nbrOfImages : 2,
 		},
+		fourBarrel : {
+			position : {x: 81, y:145},
+			size : {width: 20, height: 32},
+			nbrOfImages : 1,
+		}
 
 	},
 
@@ -173,19 +178,19 @@ var sprites = {
 	oil : {
 		burnNot : {
 			position : {x: 0, y:177 },
-			size : {width: 16, height: 10},
+			size : {width: 16, height: 32},
 			nbrOfImages : 1,
 		},
 
 		burnBegin : {
 			position : {x: 17, y:177 },
-			size : {width: 16, height: 10},
+			size : {width: 16, height: 32},
 			nbrOfImages : 2,
 		},
 
 		burn : {
 			position : {x: 49, y:177 },
-			size : {width: 16, height: 10},
+			size : {width: 16, height: 32},
 			nbrOfImages : 2,
 		},
 
