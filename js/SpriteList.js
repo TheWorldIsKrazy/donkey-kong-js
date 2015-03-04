@@ -11,9 +11,12 @@ var SpriteList = function(params) {
 	this.loaded = false;
 
 	this.image = new Image();
-	that = this;
+	var that = this;
 	this.image.addEventListener("load", function() {
-		that.loaded = true;
+		(function(spritelist){
+			console.log("The SpriteList for \"" + spritelist.source + "\" is loaded !");
+			spritelist.loaded = true;
+		})(that);
 	}, false);
 	this.image.src = this.source;
 
@@ -23,18 +26,21 @@ var SpriteList = function(params) {
 	this.sprites = {};
 }
 
-SpriteList.prototype.getSprite = function(anim) {
-	if (this.animations[anim] !== undefined) {
-		if (this.sprites[anim] == undefined) {
+SpriteList.prototype.getSprite = function(obj, anim) {
+	if (this.animations[obj][anim] !== undefined) {
+		if (this.sprites[obj] == undefined) {
+			this.sprites[obj] = {};
+		};
+		if (this.sprites[obj][anim] == undefined) {
 			var imgList = new Array();
-			console.log(this.animations[anim]);
+			
 			// for (var i = 0; i < Things.length; i++) {
 			// 	Things[i]
 			// };
 
-			this.sprites[anim] = new Sprite();
+			//this.sprites[obj][anim] = new Sprite();
 		}
-		return this.sprites[anim];
+		return this.sprites[obj][anim];
 	} else {
 		console.log("L'animations " + anim + " n'existe pas !");
 		return false;

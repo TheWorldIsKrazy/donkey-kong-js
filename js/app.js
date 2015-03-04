@@ -6,6 +6,8 @@ var allSkins = new SpriteList({
 	animations : sprites,
 });
 
+console.log(allSkins.getSprite('mario', 'standLeft'));
+
 var map = new Map({
 	levels: levels,
 	size: {width: 28, height:28},
@@ -19,14 +21,14 @@ map.loadLevel(0, function() {
 	map.display();
 });
 
-objects.mario = new Character({
-	position : {x : 500, y: 50},
-	velocity : {x: 0, y:0},
-	acceleration: {x:0.15, y:0},
-	ctx : ctx,
-});
+// objects.mario = new Character({
+// 	position : {x : 500, y: 50},
+// 	velocity : {x: 0, y:0},
+// 	acceleration: {x:0.15, y:0},
+// 	ctx : ctx,
+// });
 
-objects.mario.display();
+// objects.mario.display();
 
 var render = function() {
 	map.display();
