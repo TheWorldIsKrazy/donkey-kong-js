@@ -21,8 +21,8 @@ var SpriteList = function(params) {
 	this.image.src = this.source;
 
 	this.draft = document.createElement('canvas');
-	this.drfatCtx = this.draft.getContext('2d');
-
+	this.draftCtx = this.draft.getContext('2d');
+	this.draftCtx.drawImage(this.image, 0, 0);
 	this.sprites = {};
 }
 
@@ -32,11 +32,17 @@ SpriteList.prototype.getSprite = function(obj, anim) {
 			this.sprites[obj] = {};
 		};
 		if (this.sprites[obj][anim] == undefined) {
+			var sprite = this.animations[obj][anim];
+
 			var imgList = new Array();
-			
-			// for (var i = 0; i < Things.length; i++) {
-			// 	Things[i]
-			// };
+
+			for (var i = 0; i < sprite.nbrOfImages; i++) {
+				var x = sprite.position.x + (i*sprite.size.width);
+				var y = sprite.position.y;
+				imgList[i] = this.draftCtx.getImageData(x, y, sprite.size.width, sprite.size.height);
+			};
+
+			console.log(imgList);
 
 			//this.sprites[obj][anim] = new Sprite();
 		}

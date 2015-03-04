@@ -2,11 +2,11 @@ var canvas = document.getElementById('monster');
 var ctx = canvas.getContext('2d');
 
 var allSkins = new SpriteList({
-	source : 'images/Arcade - Donkey Kong - Donkey Kong.png',
+	source : 'images/spriteMondeX3.png',
 	animations : sprites,
 });
 
-console.log(allSkins.getSprite('mario', 'standLeft'));
+console.log(allSkins.getSprite('barrelWood', 'rollSide'));
 
 var map = new Map({
 	levels: levels,
