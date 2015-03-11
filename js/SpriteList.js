@@ -1,7 +1,7 @@
 /**
 * Class SpriteList
-* @source : sprite image
-* @animations : {'name': {min: frame, max:frame, frameRate: X(fps)}}
+* @source : sprite image url
+* 
 **/
 var SpriteList = function(params) {
 	this.source = params.source || null;
@@ -45,7 +45,7 @@ SpriteList.prototype.getSprite = function(obj, anim, params) {
 			var params = params || {};
 			params.imgList = imgList;
 
-			this.sprites[obj][anim] = new Sprite(params);
+			this.sprites[obj][anim] = new Skin(params);
 		}
 		return this.sprites[obj][anim];
 	} else {

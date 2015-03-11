@@ -1,12 +1,8 @@
 /**
-* Class Sprite
-* @imgList : list of imageData
-* @parent : object with position and layer properties
-* @visible : true false
-* @fps
-* @initIndex
+* Class Skin
+* @
 **/
-var Sprite = function(params) {
+var Skin = function(params) {
 	this.parent = params.parent;
 	this.imgList = params.imgList;
 	this.visible = params.visible || true;
@@ -27,20 +23,20 @@ var Sprite = function(params) {
 	this.play = true;
 }
 
-Sprite.prototype.play = function(reverse) {
+Skin.prototype.play = function(reverse) {
 	this.reverse = reverse;
 	this.play = true;
 }
 
-Sprite.prototype.pause = function() {
+Skin.prototype.pause = function() {
 	this.play = false;
 }
 
-Sprite.prototype.switchRevese = function(val) {
+Skin.prototype.switchRevese = function(val) {
 	this.reverse = !this.reverse || val;
 }
 
-Sprite.prototype.nextImage = function() {
+Skin.prototype.nextImage = function() {
 	if (this.play == true) {
 		if (this.reverse) {
 			this.index--
@@ -57,7 +53,7 @@ Sprite.prototype.nextImage = function() {
 
 };
 
-Sprite.prototype.update = function() {
+Skin.prototype.update = function() {
 	if (this.play == true && this.length > 1 ) {
 		if (this.frameRate > 0) {
 			if ( (Date.now() - this.lastRenderTime) > (1000/this.getAnim().frameRate) ) {
@@ -71,11 +67,11 @@ Sprite.prototype.update = function() {
 	};
 }
 
-Sprite.prototype.setParam = function(param, value) {
+Skin.prototype.setParam = function(param, value) {
 	this[param] = value;
 }
 
-Sprite.prototype.display = function() {
+Skin.prototype.display = function() {
 	if (this.index != this.lastRenderFrame) {
 		pos = this.position;
 		// Draw
@@ -87,10 +83,10 @@ Sprite.prototype.display = function() {
 	}
 }
 
-Sprite.prototype.hide = function() {
+Skin.prototype.hide = function() {
 	this.visible = false;
 };
 
-Sprite.prototype.show = function() {
+Skin.prototype.show = function() {
 	this.visible = true;
 };

@@ -1,3 +1,4 @@
+
 var WorldObject = function (params) {
 	if (params) {
 		this.position = params.position;
@@ -24,7 +25,7 @@ WorldObject.prototype.applyMap = function(map) {
 };
 
 WorldObject.prototype.display = function() {
-	this.sprite.display(this.skin);
+	this.skin.display();
 };
 
 
