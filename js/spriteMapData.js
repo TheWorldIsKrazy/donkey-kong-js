@@ -1,6 +1,6 @@
 var multiply = 3;
 
-var sprites = {
+var mapSprites = {
 
 	level0 : {
 		blockRouge : {
@@ -38,12 +38,12 @@ var sprites = {
 
 };
 
-for (var name in sprites) {
-	charact = sprites[name];
+for (var name in mapSprites) {
+	charact = mapSprites[name];
 	for (var animName in charact) {
-		sprites[name][animName].position.x = sprites[name][animName].position.x * multiply;
-		sprites[name][animName].position.y = sprites[name][animName].position.y * multiply;
-		sprites[name][animName].size.width = sprites[name][animName].size.width * multiply;
-		sprites[name][animName].size.height = sprites[name][animName].size.height * multiply;
+		mapSprites[name][animName].position.x = mapSprites[name][animName].position.x * multiply;
+		mapSprites[name][animName].position.y = mapSprites[name][animName].position.y * multiply;
+		mapSprites[name][animName].size.width = mapSprites[name][animName].size.width * multiply;
+		mapSprites[name][animName].size.height = mapSprites[name][animName].size.height * multiply;
 	};
 };
