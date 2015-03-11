@@ -4,6 +4,7 @@ var Map = function(params) {
 	this.grid = params.grid;
 	this.size = params.size;
 	this.layer = params.layer;
+	this.world = params.world;
 
 	// data validation
 	for (var i = 0; i < this.data.length; i++) {
