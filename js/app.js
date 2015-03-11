@@ -5,6 +5,11 @@ var allSkins = new SpriteList({
 	animations : sprites,
 });
 
+var mapSkins = new SpriteList({
+	source : 'images/spriteMapX3.png',
+	animations : mapSprite,
+})
+
 var map = new Map({
 	levels: levels,
 	size: {width: 28, height:28},
