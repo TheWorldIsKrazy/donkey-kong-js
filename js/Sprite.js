@@ -1,18 +1,10 @@
 /**
 * Class Sprite
-* @source : sprite image
-* @rows : number of image collumn
-* @size : of one image {height: XX, width: XX}
-* @nbrOfImages
-* @canvas
-* @context
-* @visible : boolean
-* @animations : {'name': {min: frame, max:frame, frameRate: X(fps)}}
-* @currentAnimation 
-* @position : {x:XX, y:XX}
-* @bounceMin : function(sprite)
-* @bounceMax : function(sprite)
-* @onload : function(sprite)
+* @imgList : list of imageData
+* @parent : object with position and layer properties
+* @visible : true false
+* @fps
+* @initIndex
 **/
 var Sprite = function(params) {
 	this.parent = params.parent;
