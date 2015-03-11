@@ -1,12 +1,14 @@
 var canvas = document.getElementById('monster');
 var ctx = canvas.getContext('2d');
 
+SpriteList.allLoad = function(){
+	console.log(allSkins.getSprite('barrelWood', 'rollSide'));
+}
+
 var allSkins = new SpriteList({
 	source : 'images/spriteMondeX3.png',
 	animations : sprites,
 });
-
-console.log(allSkins.getSprite('barrelWood', 'rollSide'));
 
 var map = new Map({
 	levels: levels,

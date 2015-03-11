@@ -12,10 +12,11 @@ var SpriteList = function(params) {
 
 	this.image = new Image();
 	var that = this;
+	SpriteList.waitForLoad++;
 	this.image.addEventListener("load", function() {
 		(function(spritelist){
-			console.log("The SpriteList for \"" + spritelist.source + "\" is loaded !");
-			spritelist.loaded = true;
+			console.log(spritelist);
+			spritelist.onload();
 		})(that);
 	}, false);
 	this.image.src = this.source;
@@ -52,3 +53,19 @@ SpriteList.prototype.getSprite = function(obj, anim) {
 		return false;
 	}
 };
+
+SpriteList.prototype.onload = function() {
+	console.log("The SpriteList for \"" + this.source + "\" is loaded !");
+	this.loaded = true;
+	SpriteList.waitForLoad--;
+	if ( SpriteList.waitForLoad == 0 ) {
+		console.log("All spritelist are loaded");
+		SpriteList.allLoad();
+	}
+};
+
+SpriteList.waitForLoad = 0;
+
+SpriteList.allLoad = function() {
+	
+}
