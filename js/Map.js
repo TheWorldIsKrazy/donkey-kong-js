@@ -22,15 +22,9 @@ var Map = function(params) {
 	}
 };
 
-Map.prototype.levelLoaded = function() {
-	
-};
-
 Map.prototype.clear = function() {
 	// Black background
-	this.ctx.rect(0,0,this.grid.width*this.size.width, this.grid.height*this.size.height);
-	this.ctx.fillStyle = "black";
-	this.ctx.fill();
+	this.layer.clear();
 };
 
 Map.prototype.loadLevel = function(level, onload) {
