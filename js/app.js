@@ -1,5 +1,3 @@
-var world = new World();
-
 var allSkins = new SpriteList({
 	source : 'images/spriteMondeX3.png',
 	animations : sprites,
@@ -8,12 +6,17 @@ var allSkins = new SpriteList({
 var mapSkins = new SpriteList({
 	source : 'images/spriteMapX3.png',
 	animations : mapSprites,
-})
+});
+
+allSkins.getSprite()
+
+var world = new World();
 
 var map = new Map({
 	levels: levels,
 	size: {width: 28, height:28},
 	grid: {width: 24, height: 24},
+	world: world,
 });
 
 

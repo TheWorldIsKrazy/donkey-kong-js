@@ -26,7 +26,7 @@ var SpriteList = function(params) {
 	this.sprites = {};
 }
 
-SpriteList.prototype.getSprite = function(obj, anim) {
+SpriteList.prototype.getSprite = function(obj, anim, params) {
 	if (this.animations[obj][anim] !== undefined) {
 		if (this.sprites[obj] == undefined) {
 			this.sprites[obj] = {};
@@ -42,7 +42,10 @@ SpriteList.prototype.getSprite = function(obj, anim) {
 				imgList[i] = this.draftCtx.getImageData(x, y, sprite.size.width, sprite.size.height);
 			};
 
-			//this.sprites[obj][anim] = new Sprite();
+			var params = params || {};
+			params.imgList = imgList;
+
+			this.sprites[obj][anim] = new Sprite(params);
 		}
 		return this.sprites[obj][anim];
 	} else {
