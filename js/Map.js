@@ -3,16 +3,7 @@ var Map = function(params) {
 	this.level = 1;
 	this.grid = params.grid;
 	this.size = params.size;
-
-	this.canvas = document.createElement('canvas');
-	this.canvas.style.position = 'absolute';
-	this.canvas.style.zIndex = '0';
-	this.ctx = this.canvas.getContext('2d');
-	document.getElementsByTagName('body')[0].appendChild(this.canvas);
-
-	// Set canvas Size
-	this.ctx.canvas.height = this.size.height * this.grid.height;
-	this.ctx.canvas.width = this.size.width * this.grid.width;
+	this.layer = params.layer;
 
 	// data validation
 	for (var i = 0; i < this.data.length; i++) {

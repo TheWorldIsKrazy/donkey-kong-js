@@ -8,7 +8,14 @@ var mapSkins = new SpriteList({
 	animations : mapSprites,
 });
 
-allSkins.getSprite()
+var size = {width: 28*24, height: 28*24};
+
+var mapLayer = new Layer(0, size);
+var characteresLayer = new Layer(1, size);
+
+// allSkins.getSprite('barrelWood', 'rollSide', {
+
+// });
 
 var world = new World();
 
@@ -17,6 +24,7 @@ var map = new Map({
 	size: {width: 28, height:28},
 	grid: {width: 24, height: 24},
 	world: world,
+	layer: mapLayer,
 });
 
 
