@@ -15,7 +15,6 @@ var SpriteList = function(params) {
 	SpriteList.waitForLoad++;
 	this.image.addEventListener("load", function() {
 		(function(spritelist){
-			console.log(spritelist);
 			spritelist.onload();
 		})(that);
 	}, false);
@@ -42,8 +41,6 @@ SpriteList.prototype.getSprite = function(obj, anim) {
 				var y = sprite.position.y;
 				imgList[i] = this.draftCtx.getImageData(x, y, sprite.size.width, sprite.size.height);
 			};
-
-			console.log(imgList);
 
 			//this.sprites[obj][anim] = new Sprite();
 		}
