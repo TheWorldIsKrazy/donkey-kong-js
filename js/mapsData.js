@@ -2,11 +2,6 @@ var levels = Array();
 
 levels[0] = {};
 
-levels[0].skins = {
-	block : 'images/blockRouge.png',
-	echelle : 'images/echelleBleu.png',
-};
-
 function decalage(content, map, x, y){
 	content = parseInt(content, 10);
 	map.displayElem('block',
@@ -16,49 +11,57 @@ function decalage(content, map, x, y){
 }
 
 levels[0].elements = {
-	' ' : new Block({
-		skin : function() {},
-	}),
+	' ' : {
+		skin : null;
+	},
 
-	'0' : new Block({
-		skin : 'block',
-	}),
+	'0' : {
+		skin : ['lvl0', 'blockRouge'],
+	},
 
-	'1' : new Block({
-		skin : decalage,
-	}),
+	'1' : {
+		skin : ['lvl0', 'blockRouge'],
+		xOffset : 1,
+	},
 
-	'2' : new Block({
-		skin : decalage,
-	}),
+	'2' : {
+		skin : ['lvl0', 'blockRouge'],
+		xOffset : 1,
+	},
 
-	'3' : new Block({
-		skin : decalage,
-	}),
+	'3' : {
+		skin : ['lvl0', 'blockRouge'],
+		xOffset : 1,
+	},
 
-	'4' : new Block({
-		skin : decalage,
-	}),
+	'4' : {
+		skin : ['lvl0', 'blockRouge'],
+		xOffset : 1,
+	},
 
-	'5' : new Block({
-		skin : decalage,
-	}),
+	'5' : {
+		skin : ['lvl0', 'blockRouge'],
+		xOffset : 1,
+	},
 
-	'6' : new Block({
-		skin : decalage,
-	}),
+	'6' : {
+		skin : ['lvl0', 'blockRouge'],
+		xOffset : 1,
+	},
 
-	'7' : new Block({
-		skin : decalage,
-	}),
+	'7' : {
+		skin : ['lvl0', 'blockRouge'],
+		xOffset : 1,
+	},
 
-	'8' : new Block({
-		skin : decalage,
-	}),
+	'8' : {
+		skin : ['lvl0', 'blockRouge'],
+	},
 
-	'H' : new Block({
-		skin : 'echelle',
-	}),
+	'H' : {
+		skin : ['lvl0', 'echelleBleu'],
+		xOffset : 1,
+	},
 
 };
 
