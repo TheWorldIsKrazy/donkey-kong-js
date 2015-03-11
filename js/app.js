@@ -7,7 +7,7 @@ var allSkins = new SpriteList({
 
 var mapSkins = new SpriteList({
 	source : 'images/spriteMapX3.png',
-	animations : mapSprite,
+	animations : mapSprites,
 })
 
 var map = new Map({
