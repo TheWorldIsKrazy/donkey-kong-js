@@ -2,7 +2,7 @@ var multiply = 3;
 
 var mapSprites = {
 
-	level0 : {
+	lvl0 : {
 		blockRouge : {
 			position : {x: 0, y: 0},
 			size : {width: 8, height: 8},
@@ -14,7 +14,7 @@ var mapSprites = {
 		},
 	},
 
-	level1 : {
+	lvl1 : {
 		blockJaune : {
 			position : {x: 0, y: 0},
 			size : {width: 8, height: 8},
