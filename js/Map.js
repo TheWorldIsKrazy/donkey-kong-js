@@ -4,24 +4,27 @@
 **/
 var Map = function(params) {
 	this.data = params.levels;
-	this.level = 1;
+	this.level = params.initlevel || 1;
 	this.grid = params.grid;
 	this.size = params.size;
 	this.layer = params.layer;
 	this.world = params.world;
+	this.blocks = new Array();
 
 	// data validation
 	for (var i = 0; i < this.data.length; i++) {
-		var layers = this.data[i].maps;
+		var map = this.data[i];
+		var layers = map.maps;
 		for (var j = 0; j < layers.length; j++) {
-			if (layers[j].length != this.size.height) {
+			var layer = layers[j];
+			if (layer.length != this.size.height) {
 				console.log("La hauteur du calque n°" + j + " du niveau " + i + " ne correspond pas !");
 			}
-			for (var k = 0; k < layers[j].length; k++) {
-				if (layers[j][k].length != this.size.width) {
+			for (var k = 0; k < layer.length; k++) {
+				if (layer[k].length != this.size.width) {
 					console.log("La largeur de la ligne n°" + k + " du calque n°" + j + " du niveau " + i + " ne correspond pas !");
 				}
-			};
+			}
 		};
 	}
 };
@@ -31,19 +34,13 @@ Map.prototype.clear = function() {
 	this.layer.clear();
 };
 
-Map.prototype.loadLevel = function(level, onload) {
+Map.prototype.loadLevel = function(level) {
 
-	if (level !== undefined) {
-		this.level = level;
-	};
+	this.unloadLevel(level);
 
-	if (onload !== undefined) {
-		this.levelLoaded = onload;
-	};
+	this.level = this.level || level;
 
-	this.clear();
-
-	var lvl = this.getCurrentLevel();
+	var lvl = this.data[this.level];
 
 	//Foreach map
 	for (var i = 0; i < lvl.maps.length; i++) {
@@ -53,21 +50,35 @@ Map.prototype.loadLevel = function(level, onload) {
 			for (var k = 0; k < lvl.maps[i][j].length; k++) {
 				// Foreach block
 				var content = lvl.maps[i][j][k];
-                var skin =  lvl.elements[content].skin;
-                if (skin !== undefined) {
-					if(typeof(skin)  == "function" ){
-						skin(content, this, k, j);
-					} else {
-						this.displayElem(skin,
-							k*this.grid.width, j*this.grid.height,
-							map.grid.width, map.grid.height
-						);
-					}
-                } else {
-                	console.log("Le charactere " + content + " ne correspond à aucun block");
-                }
+				console.log(content);
+
+				var block = new Block();
+
+				// var skin =  lvl.elements[content].skin;
+				// if (skin !== undefined) {
+				// 	if(typeof(skin)  == "function" ){
+				// 		skin(content, this, k, j);
+				// 	} else {
+				// 		this.displayElem(skin,
+				// 			k*this.grid.width, j*this.grid.height,
+				// 			map.grid.width, map.grid.height
+				// 		);
+				// 	}
+				// } else {
+				// 	console.log("Le charactere " + content + " ne correspond à aucun block");
+				// }
 			}
 		}
+	}
+
+};
+
+Map.prototype.unloadLevel = function(level) {
+	var level = level || this.level;
+
+	for (var i = 0; i < this.blocks.length; i++) {
+		var index = this.blocks[i];
+		delete this.world[index];
 	}
 
 };
@@ -109,10 +120,6 @@ Map.prototype.loadLevel = function(level, onload) {
 // 		x, y, width, height
 // 	);
 // };
-
-Map.prototype.getCurrentLevel = function() {
-	return this.data[this.level];
-};
 
 // Map.prototype.imgLoaded = function() {
 // 	this.imgsOK++;

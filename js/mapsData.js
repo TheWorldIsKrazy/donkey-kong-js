@@ -12,7 +12,7 @@ function decalage(content, map, x, y){
 
 levels[0].elements = {
 	' ' : {
-		skin : null;
+		skin : null,
 	},
 
 	'0' : {

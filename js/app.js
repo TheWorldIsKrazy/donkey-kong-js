@@ -27,6 +27,7 @@ var map = new Map({
 	layer: mapLayer,
 });
 
+map.loadLevel(0);
 
 // objects.mario = new Character({
 // 	position : {x : 500, y: 50},
