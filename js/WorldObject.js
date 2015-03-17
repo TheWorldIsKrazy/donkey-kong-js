@@ -6,6 +6,8 @@ var WorldObject = function (params) {
 		this.velocity = params.velocity || {x:0, y:0},
 		this.acceleration = params.acceleration || {x:0, y:0},
 		this.skin = params.skin;
+		this.layer = params.layer;
+		this.world = params.world;
 	}
 };
 
@@ -20,12 +22,22 @@ WorldObject.prototype.applyVelocity = function() {
 	this.position.y += this.velocity.y;
 };
 
-WorldObject.prototype.applyMap = function(map) {
-	
+WorldObject.prototype.display = function(layers) {
+	this.skin.display(layers);
 };
 
-WorldObject.prototype.display = function() {
-	this.skin.display();
+WorldObject.prototype.getLayer = function() {
+	return this.layer || this.parent.getLayer();
 };
 
+WorldObject.prototype.getPosition = function() {
+	return this.position || this.parent.getPosition();
+};
 
+WorldObject.prototype.collision = function(worlds) {
+	worlds = worlds || this.world;
+	for (var i = 0; i < worlds.length; i++) {
+		world = worlds[i];
+		world.collisionWith(this);
+	};
+};

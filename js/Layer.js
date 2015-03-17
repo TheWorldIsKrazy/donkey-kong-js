@@ -1,5 +1,7 @@
 var Layer = function (zIndex, size) {
 
+	Layer.all = Layer.all || new Array();
+
 	for (var i = 0; i < Layer.all.length; i++) {
 		lay = Layer.all[i];
 		if (lay.zIndex == zIndex) {
@@ -23,11 +25,14 @@ var Layer = function (zIndex, size) {
 
 };
 
-Layer.prototype.clear = function() {
-	this.ctx.clearRect(0,0,this.size.height,this.size.width);
+Layer.prototype.clear = function(color) {
+	if (color) {
+		this.ctx.fillStyle = color;
+		this.ctx.fillRect(0,0,this.size.height,this.size.width);
+	} else {
+		this.ctx.clearRect(0,0,this.size.height,this.size.width);
+	}
 };
-
-Layer.all = new Array();
 
 
 

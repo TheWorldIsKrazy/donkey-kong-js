@@ -9,14 +9,14 @@ var mapSprites = {
 		},
 
 		echelleBleu : {
-			position : {x: 8, y:8},
+			position : {x: 8, y:0},
 			size : {width: 8, height: 8},
 		},
 	},
 
 	lvl1 : {
 		blockJaune : {
-			position : {x: 0, y: 0},
+			position : {x: 0, y: 8},
 			size : {width: 8, height: 8},
 		},
 
@@ -26,12 +26,12 @@ var mapSprites = {
 		},		
 
 		croix : {
-			position : {x: 16, y: 16},
+			position : {x: 16, y: 8},
 			size : {width: 8, height: 8},
 		},
 
 		blockCarreJaune : {
-			position : {x: 24, y:24},
+			position : {x: 24, y:8},
 			size : {width: 8, height: 8},
 		},
 	},

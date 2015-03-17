@@ -61,15 +61,19 @@ Map.prototype.loadLevel = function(level) {
 				} else {
 					var xOffset = blockElem.xOffset || 0;
 					var yOffset = blockElem.yOffset || 0;
+					var skin = Object.create(this.skins.getSprite(blockElem.skin[0], blockElem.skin[1]));
 					var block = new Block({
 						size: this.grid,
 						position: {
-							x: j*this.grid.width + xOffset,
+							x: k*this.grid.width + xOffset,
 							y: j*this.grid.height + yOffset,
 						},
-						skin: this.skins.getSprite(blockElem.skin[0], blockElem.skin[1]),
+						skin: skin,
+						layer: this.layer,
+						world: this.world,
 					});
 
+					skin.parent = block;
 					this.world.add(block);
 					this.blocks.push(block);
 

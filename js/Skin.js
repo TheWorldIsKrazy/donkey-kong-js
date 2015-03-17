@@ -24,8 +24,10 @@ var Skin = function(params) {
 }
 
 Skin.prototype.play = function(reverse) {
-	this.reverse = reverse;
-	this.play = true;
+	if (this.imgList > 0) {
+		this.reverse = reverse;
+		this.play = true;
+	}
 }
 
 Skin.prototype.pause = function() {
@@ -71,16 +73,21 @@ Skin.prototype.setParam = function(param, value) {
 	this[param] = value;
 }
 
-Skin.prototype.display = function() {
-	if (this.index != this.lastRenderFrame) {
-		pos = this.position;
-		// Draw
-		this.layer.ctx.drawImage(
-			this.imgList[this.index],
-			pos.x, pos.y
-		);
-		this.lastRenderFrame = this.index;
-	}
+Skin.prototype.display = function(layers) {
+	//if (this.index != this.lastRenderFrame) {
+		var layer = this.getLayer();
+		layers = layers || Layer.all;
+
+		if (layers.indexOf(layer) > -1) {
+			var pos = this.getPosition();
+			// Draw
+			layer.ctx.putImageData(
+				this.imgList[this.index],
+				pos.x, pos.y
+			);
+			this.lastRenderFrame = this.index;
+		}
+	//}
 }
 
 Skin.prototype.hide = function() {
@@ -89,4 +96,12 @@ Skin.prototype.hide = function() {
 
 Skin.prototype.show = function() {
 	this.visible = true;
+};
+
+Skin.prototype.getLayer = function() {
+	return this.layer || this.parent.getLayer();
+};
+
+Skin.prototype.getPosition = function() {
+	return this.position || this.parent.getPosition();
 };
