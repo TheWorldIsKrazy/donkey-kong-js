@@ -24,8 +24,8 @@ World.prototype.applyVelocity = function() {
 	}
 };
 
-World.prototype.collisionWith = function(left) {
-	var result = [];
+World.prototype.collisionsWith = function(left) {
+	var result = new Array();
 	for (var index in this.objects) {
 		right = this.objects[index];
 		if (left !== right) {
@@ -33,16 +33,16 @@ World.prototype.collisionWith = function(left) {
 				left.position.x + left.size.width > right.position.x &&
 				left.position.y < right.position.y + right.size.height &&
 				left.size.height + left.position.y > right.position.y) {
-				
+			
 				// Collision
-				result.push(left);
+				result.push(right);
 			}
 		}
 	}
 	if (result.length == 0)
 		return false;
 	else 
-		return $result;
+		return result;
 };
 
 

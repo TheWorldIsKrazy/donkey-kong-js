@@ -57,7 +57,7 @@ SpriteList.prototype.getSprite = function(obj, anim, params) {
 			this.sprites[obj][anim] = new Skin(params);
 		}
 		// Clone sprite
-		return this.sprites[obj][anim];
+		return Object.create(this.sprites[obj][anim]);
 	} else {
 		console.log("L'animations " + anim + " n'existe pas !");
 		return false;

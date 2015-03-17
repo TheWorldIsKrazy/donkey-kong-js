@@ -17,27 +17,57 @@ var characteresLayer = new Layer(1, size);
 
 var mapWorld = new World();
 var characteresWorld = new World();
-var map;
 
-SpriteList.allLoad = function() {
+var map;
+var jumpman;
+
+// Init
+function init() {
 	
 	map = new Map({
 		levels: levels,
 		skins: mapSkins,
 		size: {width: 28, height:28},
 		grid: {width: 24, height: 24},
-		world: world,
+		world: mapWorld,
 		layer: mapLayer,
 	});
 
+	jumpman = new Character({
+		position : {x:200, y:200},
+		size : {width: 12*3, height:16*3},
+		velocity : {x:0, y:0.5},
+		layer : characteresLayer
+	}).setSkin(allSkins, 'jumpMan','standLeft');
+
+
+	characteresWorld.add(jumpman);
+
 	map.loadLevel(0);
 	mapLayer.clear('#000');
-	world.display([mapLayer]);
+	mapWorld.display();
+	characteresWorld.display();
 
-	window.setInterval(function() {
-		characteresLayer.clear();
-		world.display([characteresLayer]);
-		world.applyVelocity();
-	}, 1000/60);
+}
+
+// Render
+function render(timestamp) {
+
+	characteresWorld.applyVelocity();
+	collisions = jumpman.collisions([mapWorld]);
+	console.log(collisions);
+	characteresLayer.clear();
+	characteresWorld.display();
+
+	// Loop
+	requestAnimationFrame(render);
+}
+
+// When Sprites are loaded
+SpriteList.allLoad = function() {
+	
+	init();
+
+	requestAnimationFrame(render);
 
 }

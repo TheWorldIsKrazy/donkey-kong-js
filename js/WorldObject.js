@@ -9,6 +9,15 @@ var WorldObject = function (params) {
 		this.layer = params.layer;
 		this.world = params.world;
 	}
+
+	return this;
+};
+
+WorldObject.prototype.setSkin = function(sprites, obj, anim) {
+	this.skin = sprites.getSprite(obj, anim);
+	this.skin.parent = this;
+
+	return this;
 };
 
 WorldObject.prototype.applyAcceleration = function() {
@@ -34,10 +43,18 @@ WorldObject.prototype.getPosition = function() {
 	return this.position || this.parent.getPosition();
 };
 
-WorldObject.prototype.collision = function(worlds) {
+WorldObject.prototype.collisions = function(worlds) {
+	result = new Array();
 	worlds = worlds || this.world;
 	for (var i = 0; i < worlds.length; i++) {
-		world = worlds[i];
-		world.collisionWith(this);
-	};
+		var world = worlds[i];
+		var res = world.collisionsWith(this);
+		console.log(res);
+		if (res)
+			result.concat(res);
+	}
+	if (result.length == 0)
+		return false;
+	else
+		return result;
 };
