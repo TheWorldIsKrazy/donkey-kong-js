@@ -64,7 +64,7 @@ function init() {
 	});
 
 	// Characters
-	jumpman = new Character({
+	jumpman = new Jumpman({
 		position : new Vector(200, 200),
 		size : new Vector(12*3, 16*3),
 		velocity : new Vector(0, 0),
@@ -86,7 +86,11 @@ function render(timestamp) {
 
 	characteresWorld.applyVelocity();
 	collisions = jumpman.collisions([mapWorld]);
-	//console.log(collisions);
+	//jumpman.velocity.setY(2);
+	for (var i = 0; i < collisions.length; i++) {
+		block = collisions[i];
+		jumpman.applyCollision(block);
+	}
 	characteresWorld.skinUpdate();
 	characteresLayer.clear();
 	characteresWorld.display();

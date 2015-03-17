@@ -67,3 +67,8 @@ WorldObject.prototype.collisions = function(worlds) {
 	else
 		return result;
 };
+
+WorldObject.prototype.applyCollision = function(right) {
+	
+};
+

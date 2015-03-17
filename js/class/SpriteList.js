@@ -55,6 +55,7 @@ SpriteList.prototype.getSprite = function(obj, anim, params) {
 			params.imgList = imgList;
 			params.fps = sprite.fps;
 			params.end = sprite.end;
+			params.physics = sprite.physics;
 
 			this.sprites[obj][anim] = new Skin(params);
 		}

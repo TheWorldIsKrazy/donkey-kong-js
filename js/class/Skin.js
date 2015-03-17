@@ -4,12 +4,14 @@
 **/
 var Skin = function(params) {
 	this.parent = params.parent;
-	this.fps = params.fps || 2;
 	this.imgList = params.imgList;
+	this.fps = params.fps || 2;
+	this.end = params.end || 'loop';
+	this.index = params.initIndex || 0;
+	this.visible = params.visible || true;
+	this.physics = params.physics || 'block';
 	if (this.imgList.length == 1)
 		this.fps = 0;
-	this.visible = params.visible || true;
-	this.index = params.initIndex || 0;
 	
 	this.layer = parent.layer;
 	this.position = parent.position;
@@ -19,7 +21,6 @@ var Skin = function(params) {
 	this.lastRenderFrame = null;
 	this.lastRenderTime = Date.now();
 
-	this.end = 'loop'; // bounce | stop | loop
 	this.reverse = false;
 
 	this.play = true;
