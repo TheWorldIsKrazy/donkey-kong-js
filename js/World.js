@@ -11,7 +11,10 @@ World.prototype.add = function(object) {
 };
 
 
-World.prototype.render = function(first_argument) {
-	// body...
+World.prototype.display = function(first_argument) {
+	for (var index in this.objects) {
+		object = this.objects[index];
+		object.display();
+	}
 };
 

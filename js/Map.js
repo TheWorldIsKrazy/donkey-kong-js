@@ -9,6 +9,7 @@ var Map = function(params) {
 	this.size = params.size;
 	this.layer = params.layer;
 	this.world = params.world;
+	this.skins = params.skins;
 	this.blocks = new Array();
 
 	// data validation
@@ -66,7 +67,7 @@ Map.prototype.loadLevel = function(level) {
 							x: j*this.grid.width + xOffset,
 							y: j*this.grid.height + yOffset,
 						},
-						skin: blockElem.skin,
+						skin: this.skins.getSprite(blockElem.skin[0], blockElem.skin[1]),
 					});
 
 					this.world.add(block);
