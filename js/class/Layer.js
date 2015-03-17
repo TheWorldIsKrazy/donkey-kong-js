@@ -17,8 +17,8 @@ var Layer = function (zIndex, size) {
 	document.getElementsByTagName('body')[0].appendChild(this.canvas);
 	this.zIndex = zIndex;
 	this.size = size;
-	this.ctx.canvas.height = size.height;
-	this.ctx.canvas.width = size.width;
+	this.ctx.canvas.height = size.y;
+	this.ctx.canvas.width = size.x;
 
 	Layer.all.push(this);
 	return this;
@@ -28,9 +28,9 @@ var Layer = function (zIndex, size) {
 Layer.prototype.clear = function(color) {
 	if (color) {
 		this.ctx.fillStyle = color;
-		this.ctx.fillRect(0,0,this.size.height,this.size.width);
+		this.ctx.fillRect(0, 0, this.size.x, this.size.y);
 	} else {
-		this.ctx.clearRect(0,0,this.size.height,this.size.width);
+		this.ctx.clearRect(0, 0, this.size.x, this.size.y);
 	}
 };
 

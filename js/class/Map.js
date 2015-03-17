@@ -18,11 +18,11 @@ var Map = function(params) {
 		var layers = map.maps;
 		for (var j = 0; j < layers.length; j++) {
 			var layer = layers[j];
-			if (layer.length != this.size.height) {
+			if (layer.length != this.size.y) {
 				console.log("La hauteur du calque n°" + j + " du niveau " + i + " ne correspond pas !");
 			}
 			for (var k = 0; k < layer.length; k++) {
-				if (layer[k].length != this.size.width) {
+				if (layer[k].length != this.size.x) {
 					console.log("La largeur de la ligne n°" + k + " du calque n°" + j + " du niveau " + i + " ne correspond pas !");
 				}
 			}
@@ -64,10 +64,10 @@ Map.prototype.loadLevel = function(level) {
 					var skin = this.skins.getSprite(blockElem.skin[0], blockElem.skin[1]);
 					var block = new Block({
 						size: this.grid,
-						position: {
-							x: k*this.grid.width + xOffset,
-							y: j*this.grid.height + yOffset,
-						},
+						position: new Vector(
+							k*this.grid.x + xOffset,
+							j*this.grid.y + yOffset
+						),
 						skin: skin,
 						layer: this.layer,
 						world: this.world,

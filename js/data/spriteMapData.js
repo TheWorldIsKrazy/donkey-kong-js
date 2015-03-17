@@ -4,35 +4,35 @@ var mapSprites = {
 
 	lvl0 : {
 		blockRouge : {
-			position : {x: 0, y: 0},
-			size : {width: 8, height: 8},
+			position : new Vector(0, 0),
+			size : new Vector(8, 8),
 		},
 
 		echelleBleu : {
-			position : {x: 8, y:0},
-			size : {width: 8, height: 8},
+			position : new Vector(8, 0),
+			size : new Vector(8, 8),
 		},
 	},
 
 	lvl1 : {
 		blockJaune : {
-			position : {x: 0, y: 8},
-			size : {width: 8, height: 8},
+			position : new Vector(0, 8),
+			size : new Vector(8, 8),
 		},
 
 		echelleBlanche : {
-			position : {x: 8, y:8},
-			size : {width: 8, height: 8},
+			position : new Vector(8, 8),
+			size : new Vector(8, 8),
 		},		
 
 		croix : {
-			position : {x: 16, y: 8},
-			size : {width: 8, height: 8},
+			position : new Vector(16, 8),
+			size : new Vector(8, 8),
 		},
 
 		blockCarreJaune : {
-			position : {x: 24, y:8},
-			size : {width: 8, height: 8},
+			position : new Vector(24, 8),
+			size : new Vector(8, 8),
 		},
 	},
 
@@ -41,9 +41,7 @@ var mapSprites = {
 for (var name in mapSprites) {
 	charact = mapSprites[name];
 	for (var animName in charact) {
-		mapSprites[name][animName].position.x = mapSprites[name][animName].position.x * multiply;
-		mapSprites[name][animName].position.y = mapSprites[name][animName].position.y * multiply;
-		mapSprites[name][animName].size.width = mapSprites[name][animName].size.width * multiply;
-		mapSprites[name][animName].size.height = mapSprites[name][animName].size.height * multiply;
+		mapSprites[name][animName].position.multiply(multiply);
+		mapSprites[name][animName].size.multiply(multiply);
 	};
 };

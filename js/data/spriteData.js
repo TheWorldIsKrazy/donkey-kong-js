@@ -4,82 +4,81 @@ var sprites = {
 
 	jumpMan : {
 		standLeft : {
-			position : {x: 0, y:0},
-			size : {width: 12, height: 16},
-			nbrOfImages : 1,
+			position : new Vector(0, 0),
+			size : new Vector(12, 16),
 		},
 
 		standRight : {
-			position : {x: 0, y:24},
-			size : {width: 12, height: 16},
-			nbrOfImages : 1,
+			position : new Vector(0, 24),
+			size : new Vector(12, 16),
 		},
 
 		runLeft : {
-			position : {x: 16, y:0},
-			size : {width: 15, height: 16},
+			position : new Vector(16, 0),
+			size : new Vector(15, 16),
 			nbrOfImages : 2,
+			fps : 6,
 		},
 
 		runRight : {
-			position : {x: 16, y:24},
-			size : {width: 15, height: 16},
+			position : new Vector(16, 24),
+			size : new Vector(15, 16),
 			nbrOfImages : 2,
+			fps : 6,
 		},
 
 		climb : {
-			position : {x: 48, y:0},
-			size : {width: 16, height: 16},
+			position : new Vector(48, 0),
+			size : new Vector(16, 16),
 			nbrOfImages : 4,
 		},
 
 		deathLeft : {
-			position : {x: 120, y:0},
-			size : {width: 16, height: 16},
+			position : new Vector(120, 0),
+			size : new Vector(16, 16),
 			nbrOfImages : 3,
 		},
 
 		deathRight : {
-			position : {x: 120, y:24},
-			size : {width: 16, height: 16},
+			position : new Vector(120, 24),
+			size : new Vector(16, 16),
 			nbrOfImages : 3,
 		},
 	},
 
 	kong : {
 		stand : {
-			position : {x: 0, y:48 },
-			size : {width: 40, height: 32},
-			nbrOfImages : 1,
+			position : new Vector(0, 48),
+			size : new Vector(40, 32),
 		},
 
 		caisseMarron : {
-			position : {x: 48, y:48 },
-			size : {width: 43, height: 32},
+			position : new Vector(48, 48),
+			size : new Vector(43, 32),
 			nbrOfImages : 3,
 		},
 
 		caisseBleue : {
-			position : {x: 184, y:48 },
-			size : {width: 43, height: 32},
+			position : new Vector(184, 48),
+			size : new Vector(43, 32),
 			nbrOfImages : 3,
 		},
 
 		climb : {
-			position : {x: 320, y:48 },
-			size : {width: 32, height: 36},
+			position : new Vector(320, 48),
+			size : new Vector(32, 36),
 			nbrOfImages : 2,
 		},
 
 		content : {
-			position : {x: 392, y:48 },
-			size : {width: 46, height: 32},
+			position : new Vector(392, 48),
+			size : new Vector(46, 32),
 			nbrOfImages : 2,
 		},
 
 		climbMeuf : {
-			position : {x: 488, y:48 },
-			size : {width: 43, height: 36},
+			position : new Vector(488, 48),
+			size : new Vector(43, 36),
 			nbrOfImages : 2,
 		},
 
@@ -87,20 +86,19 @@ var sprites = {
 
 	poline : {
 		stand : {
-			position : {x: 0, y:88 },
-			size : {width: 16, height: 22},
-			nbrOfImages : 1,
+			position : new Vector(0, 88),
+			size : new Vector(16, 22),
 		},
 
 		dance : {
-			position : {x: 16, y:88 },
-			size : {width: 40, height: 32},
+			position : new Vector(16, 88),
+			size : new Vector(40, 32),
 			nbrOfImages : 2,
 		},
 		
 		climb : {
-			position : {x: 32, y:88 },
-			size : {width: 40, height: 32},
+			position : new Vector(32, 88),
+			size : new Vector(40, 32),
 			nbrOfImages : 2,
 		},
 
@@ -108,68 +106,66 @@ var sprites = {
 
 	fireBall : {
 		left : {
-			position : {x: 0, y:112 },
-			size : {width: 14, height: 22},
+			position : new Vector(0, 112),
+			size : new Vector(14, 22),
 			nbrOfImages : 2,
 		},
 
 		right : {
-			position : {x: 32, y:112 },
-			size : {width: 14, height: 22},
+			position : new Vector(32, 112),
+			size : new Vector(14, 22),
 			nbrOfImages : 2,
 		},
 	},
 
 	fireBallBlue : {
 		left : {
-			position : {x: 0, y:128 },
-			size : {width: 16, height: 22},
+			position : new Vector(0, 128),
+			size : new Vector(16, 22),
 			nbrOfImages : 2,
 		},
 
 		right : {
-			position : {x: 32, y:128 },
-			size : {width: 14, height: 16},
+			position : new Vector(32, 128),
+			size : new Vector(14, 16),
 			nbrOfImages : 2,
 		},
 	},
 
 	barrelWood : {
 		stand : {
-			position : {x: 0, y:144 },
-			size : {width: 10, height: 16},
-			nbrOfImages : 1,
+			position : new Vector(0, 144),
+			size : new Vector(10, 16),
 		},
 
 		rollSide : {
-			position : {x: 16, y:144 },
-			size : {width: 12, height: 10},
+			position : new Vector(16, 144),
+			size : new Vector(12, 10),
 			nbrOfImages : 4,
 		},
 
 		rollFront : {
-			position : {x: 64, y:144 },
-			size : {width: 16, height: 10},
+			position : new Vector(64, 144),
+			size : new Vector(16, 10),
 			nbrOfImages : 2,
 		},
 		fourBarrel : {
-			position : {x: 80, y:144},
-			size : {width: 20, height: 32},
-			nbrOfImages : 1,
+			position : new Vector(80, 144),
+			size : new Vector(20, 32),
 		}
 
 	},
 
 	barrelWoodBlue : {
 		rollSide : {
-			position : {x: 16, y:160 },
-			size : {width: 12, height: 10},
+			position : new Vector(16, 160),
+			size : new Vector(12, 10),
 			nbrOfImages : 4,
 		},
 
 		rollFront : {
-			position : {x: 64, y:160 },
-			size : {width: 16, height: 10},
+			position : new Vector(64, 160),
+			size : new Vector(16, 10),
 			nbrOfImages : 2,
 		},
 
@@ -177,20 +173,19 @@ var sprites = {
 
 	oil : {
 		burnNot : {
-			position : {x: 0, y:176 },
-			size : {width: 16, height: 32},
-			nbrOfImages : 1,
+			position : new Vector(0, 176),
+			size : new Vector(16, 32),
 		},
 
 		burnBegin : {
-			position : {x: 16, y:176 },
-			size : {width: 16, height: 32},
+			position : new Vector(16, 176),
+			size : new Vector(16, 32),
 			nbrOfImages : 2,
 		},
 
 		burn : {
-			position : {x: 48, y:176 },
-			size : {width: 16, height: 32},
+			position : new Vector(48, 176),
+			size : new Vector(16, 32),
 			nbrOfImages : 2,
 		},
 
@@ -201,9 +196,7 @@ var sprites = {
 for (var name in sprites) {
 	charact = sprites[name];
 	for (var animName in charact) {
-		sprites[name][animName].position.x = sprites[name][animName].position.x * multiply;
-		sprites[name][animName].position.y = sprites[name][animName].position.y * multiply;
-		sprites[name][animName].size.width = sprites[name][animName].size.width * multiply;
-		sprites[name][animName].size.height = sprites[name][animName].size.height * multiply;
+		sprites[name][animName].position.multiply(multiply);
+		sprites[name][animName].size.multiply(multiply);
 	};
 };

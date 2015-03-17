@@ -2,6 +2,7 @@
 var WorldObject = function (params) {
 	if (params) {
 		this.position = params.position || {x:0, y:0};
+		this.lastPosition = this.position.clone();
 		this.size = params.size || {width: 50, height:50},
 		this.velocity = params.velocity || {x:0, y:0},
 		this.acceleration = params.acceleration || {x:0, y:0},
@@ -13,9 +14,12 @@ var WorldObject = function (params) {
 	return this;
 };
 
-WorldObject.prototype.setSkin = function(sprites, obj, anim) {
-	this.skin = sprites.getSprite(obj, anim);
+WorldObject.prototype.setSkin = function(anim, obj, sprites) {
+	this.spriteGroup = sprites || this.spriteGroup;
+	this.spriteObj = obj || this.spriteObj;
+	this.skin = this.spriteGroup.getSprite(this.spriteObj, anim);
 	this.skin.parent = this;
+	this.skin.lastRenderTime = Date.now();
 
 	return this;
 };
@@ -26,13 +30,19 @@ WorldObject.prototype.applyAcceleration = function() {
 };
 
 WorldObject.prototype.applyVelocity = function() {
-
+	this.position.x += this.velocity.x;
+	this.position.y += this.velocity.y;
+	
 	this.position.x += this.velocity.x;
 	this.position.y += this.velocity.y;
 };
 
 WorldObject.prototype.display = function(layers) {
 	this.skin.display(layers);
+};
+
+WorldObject.prototype.skinUpdate = function(layers) {
+	this.skin.update(layers);
 };
 
 WorldObject.prototype.getLayer = function() {
@@ -44,14 +54,13 @@ WorldObject.prototype.getPosition = function() {
 };
 
 WorldObject.prototype.collisions = function(worlds) {
-	result = new Array();
+	var result = new Array();
 	worlds = worlds || this.world;
 	for (var i = 0; i < worlds.length; i++) {
 		var world = worlds[i];
 		var res = world.collisionsWith(this);
-		console.log(res);
-		if (res)
-			result.concat(res);
+		for (var i = 0; i < res.length; i++)
+			result.push(res[i]);
 	}
 	if (result.length == 0)
 		return false;

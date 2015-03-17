@@ -46,13 +46,15 @@ SpriteList.prototype.getSprite = function(obj, anim, params) {
 			sprite.nbrOfImages = sprite.nbrOfImages || 1;
 
 			for (var i = 0; i < sprite.nbrOfImages; i++) {
-				var x = sprite.position.x + (i*sprite.size.width);
+				var x = sprite.position.x + (i*sprite.size.x);
 				var y = sprite.position.y;
-				imgList[i] = this.draftCtx.getImageData(x, y, sprite.size.width, sprite.size.height);
+				imgList[i] = this.draftCtx.getImageData(x, y, sprite.size.x, sprite.size.y);
 			};
 
 			var params = params || {};
 			params.imgList = imgList;
+			params.fps = sprite.fps;
+			params.end = sprite.end;
 
 			this.sprites[obj][anim] = new Skin(params);
 		}

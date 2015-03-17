@@ -17,6 +17,13 @@ World.prototype.display = function(layers) {
 	}
 };
 
+World.prototype.skinUpdate = function(layers) {
+	for (var index in this.objects) {
+		object = this.objects[index];
+		object.skinUpdate(layers);
+	}
+};
+
 World.prototype.applyVelocity = function() {
 	for (var index in this.objects) {
 		object = this.objects[index];
@@ -29,10 +36,10 @@ World.prototype.collisionsWith = function(left) {
 	for (var index in this.objects) {
 		right = this.objects[index];
 		if (left !== right) {
-			if (left.position.x < right.position.x + right.size.width &&
-				left.position.x + left.size.width > right.position.x &&
-				left.position.y < right.position.y + right.size.height &&
-				left.size.height + left.position.y > right.position.y) {
+			if (left.position.x < right.position.x + right.size.x &&
+				left.position.x + left.size.x > right.position.x &&
+				left.position.y < right.position.y + right.size.y &&
+				left.size.y + left.position.y > right.position.y) {
 			
 				// Collision
 				result.push(right);

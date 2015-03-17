@@ -4,9 +4,11 @@
 **/
 var Skin = function(params) {
 	this.parent = params.parent;
-	this.imgList = params.imgList;
-	this.visible = params.visible || true;
 	this.fps = params.fps || 2;
+	this.imgList = params.imgList;
+	if (this.imgList.length == 1)
+		this.fps = 0;
+	this.visible = params.visible || true;
 	this.index = params.initIndex || 0;
 	
 	this.layer = parent.layer;
@@ -17,7 +19,7 @@ var Skin = function(params) {
 	this.lastRenderFrame = null;
 	this.lastRenderTime = Date.now();
 
-	this.end = 'bounce'; // bounce | stop | loop
+	this.end = 'loop'; // bounce | stop | loop
 	this.reverse = false;
 
 	this.play = true;
@@ -39,34 +41,42 @@ Skin.prototype.switchRevese = function(val) {
 }
 
 Skin.prototype.nextImage = function() {
-	if (this.play == true) {
+	if (this.play == true && this.imgList.length > 1) {
 		if (this.reverse) {
 			this.index--
 		} else {
 			this.index++;
 		}
-		if (this.index < this.getAnim().min) {
-
+		if (this.end == 'bounce') {
+			if (this.index == this.imgList.length-1 || this.index == 0) {
+				this.switchRevese();
+			}
 		}
-		if (this.index > this.getAnim().max) {
-
-		}
-	};
-
-};
-
-Skin.prototype.update = function() {
-	if (this.play == true && this.length > 1 ) {
-		if (this.frameRate > 0) {
-			if ( (Date.now() - this.lastRenderTime) > (1000/this.getAnim().frameRate) ) {
-				this.lastRenderTime = Date.now();
-				this.nextImage();		
+		if (this.end == 'loop') {
+			if (this.index == this.imgList.length) {
+				this.index = 0;
+			}
+			if (this.index < 0) {
+				this.index = this.imgList.length-1;
 			}
 		}
 	}
-	if (this.visible) {
-		this.display();
-	};
+};
+
+Skin.prototype.update = function(layers) {
+	if (this.play == true && this.length > 1 ) {
+		var layer = this.getLayer();
+		layers = layers || Layer.all;
+
+		if (layers.indexOf(layer) > -1) {
+			if (this.fps > 0) {
+				if ( (Date.now() - this.lastRenderTime) > (1000/this.fps) ) {
+					this.nextImage();		
+					this.lastRenderTime = Date.now();
+				}
+			}
+		}
+	}
 }
 
 Skin.prototype.setParam = function(param, value) {
@@ -74,7 +84,7 @@ Skin.prototype.setParam = function(param, value) {
 }
 
 Skin.prototype.display = function(layers) {
-	//if (this.index != this.lastRenderFrame) {
+	if (this.visible) {
 		var layer = this.getLayer();
 		layers = layers || Layer.all;
 
@@ -87,7 +97,7 @@ Skin.prototype.display = function(layers) {
 			);
 			this.lastRenderFrame = this.index;
 		}
-	//}
+	}
 }
 
 Skin.prototype.hide = function() {
