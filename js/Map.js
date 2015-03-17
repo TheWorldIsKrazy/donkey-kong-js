@@ -4,7 +4,7 @@
 **/
 var Map = function(params) {
 	this.data = params.levels;
-	this.level = params.initlevel || 1;
+	this.level = params.initlevel || 0;
 	this.grid = params.grid;
 	this.size = params.size;
 	this.layer = params.layer;
@@ -38,35 +38,41 @@ Map.prototype.loadLevel = function(level) {
 
 	this.unloadLevel(level);
 
-	this.level = this.level || level;
+	this.level = level || this.level;
 
-	var lvl = this.data[this.level];
+	var layers = this.data[this.level].maps;
+	var skins = this.data[this.level].skins;
 
 	//Foreach map
-	for (var i = 0; i < lvl.maps.length; i++) {
-		// Foreach line
-		for (var j = 0; j < lvl.maps[i].length; j++) {
-			// Foreach case
-			for (var k = 0; k < lvl.maps[i][j].length; k++) {
+	for (var i = 0; i < layers.length; i++) {
+		// Foreach line j = ligne
+		for (var j = 0; j < layers[i].length; j++) {
+			// Foreach case k = colone
+			for (var k = 0; k < layers[i][j].length; k++) {
 				// Foreach block
-				var content = lvl.maps[i][j][k];
-				console.log(content);
+				var blockChar = layers[i][j][k];
 
-				var block = new Block();
+				var blockElem = skins[blockChar];
 
-				// var skin =  lvl.elements[content].skin;
-				// if (skin !== undefined) {
-				// 	if(typeof(skin)  == "function" ){
-				// 		skin(content, this, k, j);
-				// 	} else {
-				// 		this.displayElem(skin,
-				// 			k*this.grid.width, j*this.grid.height,
-				// 			map.grid.width, map.grid.height
-				// 		);
-				// 	}
-				// } else {
-				// 	console.log("Le charactere " + content + " ne correspond à aucun block");
-				// }
+				if (blockElem == undefined) {
+					if (blockChar !== ' ')
+						console.log("Le charactere " + blockChar + " ne correspond à aucun block");
+				} else {
+					var xOffset = blockElem.xOffset || 0;
+					var yOffset = blockElem.yOffset || 0;
+					var block = new Block({
+						size: this.grid,
+						position: {
+							x: j*this.grid.width + xOffset,
+							y: j*this.grid.height + yOffset,
+						},
+						skin: blockElem.skin,
+					});
+
+					this.world.add(block);
+					this.blocks.push(block);
+
+				}
 			}
 		}
 	}
@@ -80,6 +86,8 @@ Map.prototype.unloadLevel = function(level) {
 		var index = this.blocks[i];
 		delete this.world[index];
 	}
+
+	this.blocks = new Array();
 
 };
 

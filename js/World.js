@@ -4,9 +4,14 @@ var World = function () {
 };
 
 World.prototype.add = function(object) {
-	result = this.objects[this.primaryKey](object);
+	this.objects[this.primaryKey] = object;
 	object.indexInWorld = this.primaryKey;
+	object.world = this;
 	this.primaryKey++;
 };
 
+
+World.prototype.render = function(first_argument) {
+	// body...
+};
 
