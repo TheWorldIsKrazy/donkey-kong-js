@@ -166,11 +166,13 @@ function render(timestamp) {
 	// Poline
 	var collisions = jumpman.detectCollisions([characteresWorld]);
 	if (collisions) {
+		console.log(map.level);
 		if (map.level == 0) {
 			poline.position = new Vector(300, 5);
 			map.loadLevel(1);
-		}
+		} else 
 		if (map.level == 1) {
+			console.log("chrage lvl 0");
 			poline.position = new Vector(300, 5);
 			map.loadLevel(0);
 		}

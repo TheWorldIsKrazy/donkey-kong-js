@@ -39,7 +39,9 @@ Map.prototype.loadLevel = function(level) {
 
 	this.unloadLevel(level);
 
-	this.level = level || this.level;
+	if (level !== undefined) {
+		this.level = level;
+	}
 
 	var layers = this.data[this.level].maps;
 	var skins = this.data[this.level].skins;
