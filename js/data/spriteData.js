@@ -81,6 +81,7 @@ var sprites = {
 			position : new Vector(119, 0),
 			size : new Vector(16, 16),
 			nbrOfImages : 3,
+			end : 'stop',
 		},
 
 		deathRight : {
@@ -94,36 +95,42 @@ var sprites = {
 		stand : {
 			position : new Vector(0, 48),
 			size : new Vector(40, 32),
+			physics : 'kong',
 		},
 
 		caisseMarron : {
 			position : new Vector(48, 48),
 			size : new Vector(43, 32),
 			nbrOfImages : 3,
+			physics : 'kong',
 		},
 
 		caisseBleue : {
 			position : new Vector(184, 48),
 			size : new Vector(43, 32),
 			nbrOfImages : 3,
+			physics : 'kong',
 		},
 
 		climb : {
 			position : new Vector(320, 48),
 			size : new Vector(32, 36),
 			nbrOfImages : 2,
+			physics : 'kong',
 		},
 
 		content : {
 			position : new Vector(392, 48),
 			size : new Vector(46, 32),
 			nbrOfImages : 2,
+			physics : 'kong',
 		},
 
 		climbMeuf : {
 			position : new Vector(488, 48),
 			size : new Vector(43, 36),
 			nbrOfImages : 2,
+			physics : 'kong',
 		},
 
 	},
@@ -132,18 +139,21 @@ var sprites = {
 		stand : {
 			position : new Vector(0, 88),
 			size : new Vector(16, 22),
+			physics : 'poline',
 		},
 
 		dance : {
 			position : new Vector(16, 88),
 			size : new Vector(15, 22),
 			nbrOfImages : 2,
+			physics : 'poline',
 		},
 		
 		climb : {
 			position : new Vector(32, 88),
 			size : new Vector(40, 32),
 			nbrOfImages : 2,
+			physics : 'poline',
 		},
 
 	},

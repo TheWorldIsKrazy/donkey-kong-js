@@ -16,7 +16,9 @@ SpriteList.startWaiting();
 var size = new Vector(28*24, 28*24);
 
 var mapLayer = new Layer(0, size);
-var characteresLayer = new Layer(1, size);
+var jumpmanLayer = new Layer(4, size);
+var polineLayer = new Layer(2, size);
+var kongLayer = new Layer(1, size);
 
 var mapWorld = new World();
 var characteresWorld = new World();
@@ -104,21 +106,31 @@ function init() {
 		position : new Vector(50, 590),
 		size : new Vector(12*3, 16*3),
 		velocity : new Vector(0, 0),
-		layer : characteresLayer
+		layer : jumpmanLayer
 	}).setSkin('standLeft', 'jumpMan', allSkins);
 	jumpman.up = false;
 
 	characteresWorld.add(jumpman);
 
-
+	// Poline
 	poline = new Character({
 		position : new Vector(300, 5),
 		size : new Vector(12*3, 16*3),
 		velocity : new Vector(0, 0),
-		layer : characteresLayer
+		layer : polineLayer,
 	}).setSkin('dance', 'poline', allSkins);
 
 	characteresWorld.add(poline);
+
+	// Kong
+	kong = new Character({
+		position : new Vector(30, 60),
+		size : new Vector(12*3, 16*3),
+		velocity : new Vector(0, 0),
+		layer : kongLayer,
+	}).setSkin('content', 'kong', allSkins);
+
+	characteresWorld.add(kong);
 
 	// Init
 	map.loadLevel(0);
@@ -145,35 +157,38 @@ function render(timestamp) {
 			jumpman.setVelocityY(0);
 	} else {
 
-		// Block
-		var collisions = jumpman.detectCollisions([mapWorld], ['block']);
-		collisions = Collision.filter(collisions, function(col) {
-			if ( col.margin.bottom > -13 ) return true;
-			else return false;
-		});
-		if (collisions) {
-			if (jumpman.up == false)
-				jumpman.setVelocityY(0);
-			var collision = collisions[0];
-			var bot = collision.margin.bottom;
-			jumpman.position.y += bot;
-		} else {
-			if (jumpman.up == false)
-				jumpman.setVelocityY(100);
-		}
+	}
+	
+	// Block
+	var collisions = jumpman.detectCollisions([mapWorld], ['block']);
+	collisions = Collision.filter(collisions, function(col) {
+		if ( col.margin.bottom > -13 ) return true;
+		else return false;
+	});
+	if (collisions) {
+		if (jumpman.up == false)
+			jumpman.setVelocityY(0);
+		var collision = collisions[0];
+		var bot = collision.margin.bottom;
+		jumpman.position.y += bot;
+	} else {
+		if (jumpman.up == false)
+			jumpman.setVelocityY(100);
 	}
 
-	// Poline
-	var collisions = jumpman.detectCollisions([characteresWorld]);
+	// Collision with Poline
+	var collisions = jumpman.detectCollisions([characteresWorld], ['poline']);
 	if (collisions) {
 		console.log(map.level);
 		if (map.level == 0) {
 			poline.position = new Vector(300, 5);
+			kong.position = new Vector(40, 71);
 			map.loadLevel(1);
 		} else 
 		if (map.level == 1) {
 			console.log("chrage lvl 0");
 			poline.position = new Vector(300, 5);
+			kong.position = new Vector(50, 60);
 			map.loadLevel(0);
 		}
 		jumpman.position = new Vector(50, 590);
@@ -181,13 +196,32 @@ function render(timestamp) {
 		mapWorld.display();
 	};
 
+	play = true;
+
+	// Collision with Kong
+	var collisions = jumpman.detectCollisions([characteresWorld], ['kong']);
+	if (collisions) {
+		jumpman.setSkin('deathLeft', 'jumpMan');
+		jumpman.velocity = new Vector(0,0);
+		listener.stop_listening();
+		play = false;
+	}
+
 	
 	characteresWorld.skinUpdate();
-	characteresLayer.clear();
+	jumpmanLayer.clear();
+	polineLayer.clear();
+	kongLayer.clear();
 	characteresWorld.display();
 
 	// Loop
-	requestAnimationFrame(render);
+	if (play) {
+		requestAnimationFrame(render);
+	} else {
+		var p = document.createElement('h1');
+		p.innerHTML = 'Perdu !!';
+		document.getElementsByTagName('body')[0].appendChild(p);
+	}
 }
 
 // When Sprites are loaded
