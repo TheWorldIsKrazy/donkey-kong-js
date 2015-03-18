@@ -31,12 +31,21 @@ World.prototype.applyVelocity = function() {
 	}
 };
 
-World.prototype.collisionsWith = function(left) {
+World.prototype.collisionsWith = function(left, physics) {
 	var result = new Array();
 	for (var index in this.objects) {
 		var right = this.objects[index];
-		var collision = new Collision(left, right);
-		if (collision) result.push(right);
+		if (physics) {
+			var physic = right.skin.physics;
+			if (physics.indexOf(physic) > -1) {
+				var collision = new Collision(left, right).overflow();
+				if (collision) result.push(collision);
+			}
+		} else {
+			// Si physics non définit
+			var collision = new Collision(left, right).overflow();
+			if (collision) result.push(collision);
+		}
 	}
 	if (result.length == 0)
 		return false;

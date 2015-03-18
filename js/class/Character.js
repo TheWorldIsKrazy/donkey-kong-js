@@ -4,5 +4,10 @@ var Character = function(params) {
 
 Character.prototype = new WorldObject();
 
+Character.prototype.applyVelocity = function() {
+	WorldObject.prototype.applyVelocity.call(this);
 
+	this.position.x = this.position.x < 0 ? 0 : this.position.x;
+	this.position.y = this.position.y < 0 ? 0 : this.position.y;
+};
 

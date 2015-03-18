@@ -32,7 +32,7 @@ function init() {
 		keys : "left",
 		prevent_repeat : true,
 		on_keydown : function() {
-			jumpman.velocity.setX(-1);
+			jumpman.velocity.setX(-200);
 			jumpman.setSkin('runLeft');
 		},
 		on_keyup : function() {
@@ -44,13 +44,20 @@ function init() {
 		keys : "right",
 		prevent_repeat : true,
 		on_keydown : function() {
-			jumpman.velocity.setX(1);
+			jumpman.velocity.setX(200);
 			jumpman.setSkin('runRight');
 		},
 		on_keyup : function() {
 			jumpman.velocity.setX(0);
 			jumpman.setSkin('standRight');
 		},
+	});
+	listener.register_combo({
+		keys : "up",
+		prevent_repeat : true,
+		on_keydown : function() {
+			jumpman.velocity.add(new Vector(0, -2000) );
+		}
 	});
 
 	// Map
@@ -85,12 +92,20 @@ function init() {
 function render(timestamp) {
 
 	characteresWorld.applyVelocity();
-	collisions = jumpman.collisions([mapWorld]);
-	//jumpman.velocity.setY(2);
-	for (var i = 0; i < collisions.length; i++) {
-		block = collisions[i];
-		jumpman.applyCollision(block);
+
+	var collisions = jumpman.detectCollisions([mapWorld], ['block']);
+	collisions = Collision.filter(collisions, function(col) {
+		if ( col.margin.bottom > -20 ) return true;
+		else return false;
+	});
+	if (collisions) {
+		jumpman.setVelocityY(0);
+		jumpman.applyCollision(collisions);
+	} else {
+		jumpman.setVelocityY(100);
 	}
+
+	
 	characteresWorld.skinUpdate();
 	characteresLayer.clear();
 	characteresWorld.display();

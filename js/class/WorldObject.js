@@ -9,6 +9,7 @@ var WorldObject = function (params) {
 		this.skin = params.skin;
 		this.layer = params.layer;
 		this.world = params.world;
+		this.lastVelocityUpdate = Date.now();
 	}
 
 	return this;
@@ -29,12 +30,30 @@ WorldObject.prototype.applyAcceleration = function() {
 	this.velocity.y += this.acceleration.y;
 };
 
+WorldObject.prototype.setVelocity = function(x, y) {
+	this.applyVelocity();
+	if (x instanceof Vector) {
+		this.velocity.set(x.x, x.y);
+	} else {
+		this.velocity.set(x,y);
+	}
+};
+
+WorldObject.prototype.setVelocityX = function(x) {
+	this.applyVelocity();
+	this.velocity.setX(x);
+};
+
+WorldObject.prototype.setVelocityY = function(y) {
+	this.applyVelocity();
+	this.velocity.setY(y);
+};
+
 WorldObject.prototype.applyVelocity = function() {
-	this.position.x += this.velocity.x;
-	this.position.y += this.velocity.y;
-	
-	this.position.x += this.velocity.x;
-	this.position.y += this.velocity.y;
+	var duration = (Date.now() - this.lastVelocityUpdate)/1000;
+	this.lastVelocityUpdate = Date.now();
+	this.lastPosition = this.position.clone();
+	this.position.add( Vector.multiply(this.velocity, duration) );
 };
 
 WorldObject.prototype.display = function(layers) {
@@ -53,12 +72,12 @@ WorldObject.prototype.getPosition = function() {
 	return this.position || this.parent.getPosition();
 };
 
-WorldObject.prototype.collisions = function(worlds) {
+WorldObject.prototype.detectCollisions = function(worlds, physics) {
 	var result = new Array();
 	worlds = worlds || this.world;
 	for (var i = 0; i < worlds.length; i++) {
 		var world = worlds[i];
-		var res = world.collisionsWith(this);
+		var res = world.collisionsWith(this, physics);
 		for (var i = 0; i < res.length; i++)
 			result.push(res[i]);
 	}
