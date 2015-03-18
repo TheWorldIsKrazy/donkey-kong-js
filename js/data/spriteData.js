@@ -46,6 +46,50 @@ var sprites = {
 		},
 	},
 
+	jumpManSayen : {
+		standLeft : {
+			position : new Vector(0, 130),
+			size : new Vector(12, 16),
+		},
+
+		standRight : {
+			position : new Vector(0, 154),
+			size : new Vector(12, 16),
+		},
+
+		runLeft : {
+			position : new Vector(16, 130),
+			size : new Vector(15, 16),
+			nbrOfImages : 2,
+			fps : 6,
+		},
+
+		runRight : {
+			position : new Vector(16, 154),
+			size : new Vector(15, 16),
+			nbrOfImages : 2,
+			fps : 6,
+		},
+
+		climb : {
+			position : new Vector(48, 130),
+			size : new Vector(16, 16),
+			nbrOfImages : 4,
+		},
+
+		deathLeft : {
+			position : new Vector(120, 130),
+			size : new Vector(16, 16),
+			nbrOfImages : 3,
+		},
+
+		deathRight : {
+			position : new Vector(120, 154),
+			size : new Vector(16, 16),
+			nbrOfImages : 3,
+		},
+	},
+
 	kong : {
 		stand : {
 			position : new Vector(0, 48),
