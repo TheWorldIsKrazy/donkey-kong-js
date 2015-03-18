@@ -6,6 +6,7 @@ var WorldObject = function (params) {
 		this.size = params.size || {width: 50, height:50},
 		this.velocity = params.velocity || {x:0, y:0},
 		this.acceleration = params.acceleration || {x:0, y:0},
+		this.forces = params.forces || {};
 		this.skin = params.skin;
 		this.layer = params.layer;
 		this.world = params.world;

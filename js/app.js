@@ -54,9 +54,26 @@ function init() {
 	});
 	listener.register_combo({
 		keys : "up",
-		prevent_repeat : true,
+		prevent_repeat : false,
 		on_keydown : function() {
-			jumpman.velocity.add(new Vector(0, -2000) );
+			jumpman.setSkin('climb');
+			jumpman.up = true;
+			jumpman.velocity.setY(-200);
+		},
+		on_keyup : function() {
+			jumpman.up = false;
+			jumpman.skin.pause(0);
+		}
+	});
+	listener.register_combo({
+		keys : "down",
+		prevent_repeat : false,
+		on_keydown : function() {
+			jumpman.up = true;
+			jumpman.velocity.setY(200);
+		},
+		on_keyup : function() {
+			jumpman.up = false;
 		}
 	});
 
@@ -77,6 +94,7 @@ function init() {
 		velocity : new Vector(0, 0),
 		layer : characteresLayer
 	}).setSkin('standLeft', 'jumpMan', allSkins);
+	jumpman.up = false;
 
 	characteresWorld.add(jumpman);
 
@@ -93,17 +111,36 @@ function render(timestamp) {
 
 	characteresWorld.applyVelocity();
 
-	var collisions = jumpman.detectCollisions([mapWorld], ['block']);
+	// Echelles
+	var collisions = jumpman.detectCollisions([mapWorld], ['water']);
 	collisions = Collision.filter(collisions, function(col) {
 		if ( col.margin.bottom > -20 ) return true;
 		else return false;
 	});
 	if (collisions) {
-		jumpman.setVelocityY(0);
-		jumpman.applyCollision(collisions);
+		if (jumpman.up == false)
+			jumpman.setVelocityY(0);
 	} else {
-		jumpman.setVelocityY(100);
+
+		// Block
+		var collisions = jumpman.detectCollisions([mapWorld], ['block']);
+		collisions = Collision.filter(collisions, function(col) {
+			if ( col.margin.bottom > -20 ) return true;
+			else return false;
+		});
+		if (collisions) {
+			if (jumpman.up == false)
+				jumpman.setVelocityY(0);
+			var collision = collisions[0];
+			var bot = collision.margin.bottom;
+			jumpman.position.y += bot;
+		} else {
+			if (jumpman.up == false)
+				jumpman.setVelocityY(100);
+		}
 	}
+
+
 
 	
 	characteresWorld.skinUpdate();

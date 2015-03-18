@@ -5,7 +5,7 @@
 var Skin = function(params) {
 	this.parent = params.parent;
 	this.imgList = params.imgList;
-	this.fps = params.fps || 2;
+	this.fps = params.fps || 6;
 	this.end = params.end || 'loop';
 	this.index = params.initIndex || 0;
 	this.visible = params.visible || true;
@@ -33,7 +33,8 @@ Skin.prototype.play = function(reverse) {
 	}
 }
 
-Skin.prototype.pause = function() {
+Skin.prototype.pause = function(index) {
+	if (index) { this.index = index };
 	this.play = false;
 }
 
