@@ -101,7 +101,7 @@ function init() {
 
 	// Characters
 	jumpman = new Jumpman({
-		position : new Vector(50, 600),
+		position : new Vector(50, 590),
 		size : new Vector(12*3, 16*3),
 		velocity : new Vector(0, 0),
 		layer : characteresLayer
@@ -176,7 +176,7 @@ function render(timestamp) {
 			poline.position = new Vector(300, 5);
 			map.loadLevel(0);
 		}
-		jumpman.position = new Vector(50, 600);
+		jumpman.position = new Vector(50, 590);
 		mapLayer.clear('#000');
 		mapWorld.display();
 	};
