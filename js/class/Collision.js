@@ -1,9 +1,12 @@
 var Collision = function(left, right) {
 	this.left = left;
 	this.right = right;
+	this.same = false;
 
-	if (left == right) {
-		return false;
+	if (left.position.isEquals(right.position) &&
+		left.size.isEquals(right.size)
+	) {
+		this.same = true;
 	} else {
 		this.margin = {
 			left : left.position.x - (right.position.x + right.size.x),
@@ -15,6 +18,9 @@ var Collision = function(left, right) {
 };
 
 Collision.prototype.overflow = function() {
+	if (this.same) {
+		return false;
+	};
 	var d = this.margin;
 	if (d.left < 0 && d.right < 0 && d.top < 0 && d.bottom < 0)
 		return this;
@@ -32,6 +38,8 @@ Collision.prototype.bottomBottom = function() {
 };
 
 Collision.filter = function(collisions, filter) {
+	if (!collisions)
+		return false;
 	var result = new Array();
 	for (var i = 0; i < collisions.length; i++) {
 		col = filter(collisions[i]);

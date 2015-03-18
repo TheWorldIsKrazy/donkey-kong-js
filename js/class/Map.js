@@ -89,7 +89,7 @@ Map.prototype.unloadLevel = function(level) {
 
 	for (var i = 0; i < this.blocks.length; i++) {
 		var index = this.blocks[i];
-		delete this.world[index];
+		this.world.delete(index);
 	}
 
 	this.blocks = new Array();

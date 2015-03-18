@@ -22,6 +22,7 @@ WorldObject.prototype.setSkin = function(anim, obj, sprites) {
 	this.skin = this.spriteGroup.getSprite(this.spriteObj, anim);
 	this.skin.parent = this;
 	this.skin.lastRenderTime = Date.now();
+	this.size = this.skin.size.clone();
 
 	return this;
 };
@@ -31,6 +32,7 @@ WorldObject.prototype.applyAcceleration = function() {
 	this.velocity.y += this.acceleration.y;
 };
 
+// Veocity
 WorldObject.prototype.setVelocity = function(x, y) {
 	this.applyVelocity();
 	if (x instanceof Vector) {
@@ -57,8 +59,14 @@ WorldObject.prototype.applyVelocity = function() {
 	this.position.add( Vector.multiply(this.velocity, duration) );
 };
 
+
+// Other
 WorldObject.prototype.display = function(layers) {
 	this.skin.display(layers);
+};
+
+WorldObject.prototype.debug = function(layers) {
+	this.skin.debug(layers);
 };
 
 WorldObject.prototype.skinUpdate = function(layers) {

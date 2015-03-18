@@ -5,6 +5,7 @@
 var Skin = function(params) {
 	this.parent = params.parent;
 	this.imgList = params.imgList;
+	this.size = params.size;
 	this.fps = params.fps || 6;
 	this.end = params.end || 'loop';
 	this.index = params.initIndex || 0;
@@ -23,19 +24,19 @@ var Skin = function(params) {
 
 	this.reverse = false;
 
-	this.play = true;
+	this.isPlaying = true;
 }
 
 Skin.prototype.play = function(reverse) {
 	if (this.imgList > 0) {
 		this.reverse = reverse;
-		this.play = true;
+		this.isPlaying = true;
 	}
 }
 
 Skin.prototype.pause = function(index) {
-	if (index) { this.index = index };
-	this.play = false;
+	if (index && this.imgList.length >= index) { this.index = index };
+	this.isPlaying = false;
 }
 
 Skin.prototype.switchRevese = function(val) {
@@ -43,7 +44,7 @@ Skin.prototype.switchRevese = function(val) {
 }
 
 Skin.prototype.nextImage = function() {
-	if (this.play == true && this.imgList.length > 1) {
+	if (this.isPlaying == true && this.imgList.length > 1) {
 		if (this.reverse) {
 			this.index--
 		} else {
@@ -66,7 +67,7 @@ Skin.prototype.nextImage = function() {
 };
 
 Skin.prototype.update = function(layers) {
-	if (this.play == true && this.length > 1 ) {
+	if (this.isPlaying == true && this.length > 1 ) {
 		var layer = this.getLayer();
 		layers = layers || Layer.all;
 
@@ -96,6 +97,24 @@ Skin.prototype.display = function(layers) {
 			layer.ctx.putImageData(
 				this.imgList[this.index],
 				pos.x, pos.y
+			);
+			this.lastRenderFrame = this.index;
+		}
+	}
+}
+
+Skin.prototype.debug = function(layers) {
+	if (this.visible) {
+		var layer = this.getLayer();
+		layers = layers || Layer.all;
+
+		if (layers.indexOf(layer) > -1) {
+			var pos = this.getPosition();
+			// Draw
+			layer.ctx.fillStyle = 'red';
+			layer.ctx.fillRect(
+				pos.x, pos.y,
+				this.size.x, this.size.y
 			);
 			this.lastRenderFrame = this.index;
 		}

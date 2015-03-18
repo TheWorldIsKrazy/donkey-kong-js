@@ -92,7 +92,7 @@ var sprites = {
 
 		dance : {
 			position : new Vector(16, 88),
-			size : new Vector(40, 32),
+			size : new Vector(15, 22),
 			nbrOfImages : 2,
 		},
 		

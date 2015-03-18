@@ -57,12 +57,13 @@ function init() {
 		prevent_repeat : false,
 		on_keydown : function() {
 			jumpman.setSkin('climb');
+			jumpman.skin.play();
 			jumpman.up = true;
 			jumpman.velocity.setY(-200);
 		},
 		on_keyup : function() {
+			jumpman.skin.pause(3);
 			jumpman.up = false;
-			jumpman.skin.pause(0);
 		}
 	});
 	listener.register_combo({
@@ -89,7 +90,7 @@ function init() {
 
 	// Characters
 	jumpman = new Jumpman({
-		position : new Vector(200, 200),
+		position : new Vector(50, 600),
 		size : new Vector(12*3, 16*3),
 		velocity : new Vector(0, 0),
 		layer : characteresLayer
@@ -98,9 +99,20 @@ function init() {
 
 	characteresWorld.add(jumpman);
 
+
+	poline = new Character({
+		position : new Vector(300, 5),
+		size : new Vector(12*3, 16*3),
+		velocity : new Vector(0, 0),
+		layer : characteresLayer
+	}).setSkin('dance', 'poline', allSkins);
+
+	characteresWorld.add(poline);
+
 	// Init
 	map.loadLevel(0);
 	mapLayer.clear('#000');
+
 	mapWorld.display();
 	characteresWorld.display();
 
@@ -125,7 +137,7 @@ function render(timestamp) {
 		// Block
 		var collisions = jumpman.detectCollisions([mapWorld], ['block']);
 		collisions = Collision.filter(collisions, function(col) {
-			if ( col.margin.bottom > -20 ) return true;
+			if ( col.margin.bottom > -6 ) return true;
 			else return false;
 		});
 		if (collisions) {
@@ -140,7 +152,21 @@ function render(timestamp) {
 		}
 	}
 
-
+	// Poline
+	var collisions = jumpman.detectCollisions([characteresWorld]);
+	console.log(collisions);
+	if (collisions) {
+		if (map.level == 0) {
+			map.loadLevel(1);
+			poline.position = new Vector(300, 5);
+		} else {
+			map.loadLevel(0);
+			poline.position = new Vector(300, 5);
+		}
+		jumpman.position = new Vector(50, 600);
+		mapLayer.clear('#000');
+		mapWorld.display();
+	};
 
 	
 	characteresWorld.skinUpdate();

@@ -19,7 +19,6 @@ var mapSprites = {
 		blockJaune : {
 			position : new Vector(0, 8),
 			size : new Vector(8, 8),
-			physics : 'water',
 		},
 
 		echelleBlanche : {
@@ -31,6 +30,7 @@ var mapSprites = {
 		croix : {
 			position : new Vector(16, 8),
 			size : new Vector(8, 8),
+			physics : 'water',
 		},
 
 		blockCarreJaune : {
