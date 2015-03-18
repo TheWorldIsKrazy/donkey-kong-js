@@ -137,7 +137,7 @@ function render(timestamp) {
 		// Block
 		var collisions = jumpman.detectCollisions([mapWorld], ['block']);
 		collisions = Collision.filter(collisions, function(col) {
-			if ( col.margin.bottom > -6 ) return true;
+			if ( col.margin.bottom > -13 ) return true;
 			else return false;
 		});
 		if (collisions) {
@@ -154,14 +154,14 @@ function render(timestamp) {
 
 	// Poline
 	var collisions = jumpman.detectCollisions([characteresWorld]);
-	console.log(collisions);
 	if (collisions) {
 		if (map.level == 0) {
+			poline.position = new Vector(300, 5);
 			map.loadLevel(1);
+		}
+		if (map.level == 1) {
 			poline.position = new Vector(300, 5);
-		} else {
 			map.loadLevel(0);
-			poline.position = new Vector(300, 5);
 		}
 		jumpman.position = new Vector(50, 600);
 		mapLayer.clear('#000');
