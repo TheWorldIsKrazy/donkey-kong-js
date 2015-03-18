@@ -77,6 +77,17 @@ function init() {
 			jumpman.up = false;
 		}
 	});
+	listener.register_combo({
+		keys : "space",
+		prevent_repeat : true,
+		on_keydown : function() {
+			if (jumpman.spriteObj == 'jumpMan') {
+				jumpman.setSkin('standLeft', 'jumpManSayen');
+			} else {
+				jumpman.setSkin('standLeft', 'jumpMan');
+			}
+		}
+	});
 
 	// Map
 	map = new Map({
